@@ -48,9 +48,17 @@
     font-size:12px;
 }
 
-.pending { background: orange; }
-.in_progress { background: dodgerblue; }
-.resolved { background: green; }
+.pending {
+    background: orange;
+}
+
+.in_progress {
+    background: dodgerblue;
+}
+
+.resolved {
+    background: green;
+}
 
 .actions {
     margin-top:10px;
@@ -65,58 +73,66 @@
     font-size:13px;
 }
 
+.btn:hover {
+    background:#163a5a;
+}
+
 </style>
 
-
 <h2 class="title">
-Officer Dashboard
+    Officer Dashboard
 </h2>
-
 
 <div class="stats">
 
-<div class="card">
-<h3>Pending</h3>
-<div class="number">{{ pending }}</div>
-</div>
+    <div class="card">
+        <h3>Pending</h3>
+        <div class="number">{{ pending }}</div>
+    </div>
 
-<div class="card">
-<h3>In Progress</h3>
-<div class="number">{{ in_progress }}</div>
-</div>
+    <div class="card">
+        <h3>In Progress</h3>
+        <div class="number">{{ in_progress }}</div>
+    </div>
 
-<div class="card">
-<h3>Resolved</h3>
-<div class="number">{{ resolved }}</div>
-</div>
+    <div class="card">
+        <h3>Resolved</h3>
+        <div class="number">{{ resolved }}</div>
+    </div>
 
 </div>
-
 
 <h3>All Issues</h3>
-
 
 {% for issue in issues %}
 
 <div class="issue">
 
-<h3>{{ issue.title }}</h3>
+    <h3>{{ issue.title }}</h3>
 
-<p>📍 {{ issue.location }}</p>
+    <p>
+        📍 {{ issue.ward }}, {{ issue.sub_county }}, {{ issue.county }}
+    </p>
 
-<p>🏷 {{ issue.category }}</p>
+    <p>
+        🏷 {{ issue.get_category_display }}
+    </p>
 
-<span class="badge {{ issue.status }}">
-    {{ issue.status|title }}
-</span>
+    <p>
+        👤 {{ issue.created_by.username }}
+    </p>
 
-<div class="actions">
+    <span class="badge {{ issue.status }}">
+        {{ issue.get_status_display }}
+    </span>
 
-<a href="{% url 'issue_detail' issue.id %}" class="btn">
-View
-</a>
+    <div class="actions">
 
-</div>
+        <a href="{% url 'issue_detail' issue.id %}" class="btn">
+            View Details
+        </a>
+
+    </div>
 
 </div>
 
@@ -125,6 +141,5 @@ View
 <p>No issues found.</p>
 
 {% endfor %}
-
 
 {% endblock %}

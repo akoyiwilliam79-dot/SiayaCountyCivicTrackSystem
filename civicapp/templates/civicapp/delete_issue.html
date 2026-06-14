@@ -1,0 +1,63 @@
+{% extends 'civicapp/base.html' %}
+
+{% block content %}
+
+<style>
+.container {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+h2 {
+    color: #1f4e79;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.delete {
+    background: #c0392b;
+    color: white;
+}
+
+.cancel {
+    background: #1f4e79;
+    color: white;
+}
+</style>
+
+<div class="container">
+
+<h2>Delete Issue</h2>
+
+<p>Are you sure you want to delete:</p>
+
+<strong>{{ issue.title }}</strong>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <button type="submit" class="delete">
+        Yes, Delete
+    </button>
+
+    <a href="{% url 'my_reports' %}">
+        <button type="button" class="cancel">
+            Cancel
+        </button>
+    </a>
+</form>
+
+</div>
+
+{% endblock %}

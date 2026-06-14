@@ -9,7 +9,7 @@ from django.conf import settings
 from django.core.paginator import Paginator
 
 from .models import *
-from .forms import IssueForm
+from .forms import IssueForm, ProfileImageForm
 
 
 # =========================
@@ -27,21 +27,36 @@ def register_view(request):
         password = request.POST.get('password')
         officer_key = request.POST.get('officer_key')
 
-        # ---- ADDED VALIDATION MESSAGES (NO LOGIC CHANGE) ----
+        # REQUIRED FIELDS CHECK
         if not username or not password:
-            messages.error(request, "Username and password are required.")
+            messages.error(
+                request,
+                "Username and password are required."
+            )
             return redirect('register')
 
+        # USERNAME ALREADY EXISTS
         if User.objects.filter(username=username).exists():
-            messages.error(request, "Username already exists.")
+            messages.error(
+                request,
+                "Username already exists. Please choose another."
+            )
             return redirect('register')
 
+        # EMAIL ALREADY EXISTS
         if email and User.objects.filter(email=email).exists():
-            messages.error(request, "Email is already registered.")
+            messages.error(
+                request,
+                "This email address is already registered."
+            )
             return redirect('register')
 
+        # PASSWORD LENGTH CHECK
         if len(password) < 8:
-            messages.error(request, "Password must be at least 8 characters.")
+            messages.error(
+                request,
+                "Password must be at least 8 characters long."
+            )
             return redirect('register')
 
         # CREATE USER
@@ -58,18 +73,26 @@ def register_view(request):
         profile.role = 'citizen'
 
         # OFFICER PROMOTION
-        if officer_key and officer_key.strip() == settings.OFFICER_REGISTRATION_KEY:
+        if (
+            officer_key and
+            officer_key.strip() == settings.OFFICER_REGISTRATION_KEY
+        ):
             profile.role = 'officer'
 
         profile.save()
 
-        # ---- SUCCESS MESSAGE ADDED ----
-        messages.success(request, "Account created successfully. Please login.")
+        # SUCCESS MESSAGE
+        messages.success(
+            request,
+            "Account created successfully. Please login."
+        )
 
         return redirect('login')
 
-    return render(request, 'civicapp/register.html')
-
+    return render(
+        request,
+        'civicapp/register.html'
+    )
 
 # =========================
 # LOGIN VIEW
@@ -86,26 +109,33 @@ def login_view(request):
         if user is not None:
             login(request, user)
 
-            # ROLE-BASED REDIRECT (UNCHANGED)
             try:
-                role = user.profile.role
-            except:
-                role = 'citizen'
+                profile = user.profile
+                role = profile.role
 
-            messages.success(request, f"Welcome back {user.username}!")
+                messages.success(request, f"Welcome back {user.username}!")
 
-            if role == 'officer':
-                return redirect('officer_dashboard')
-            else:
+                # FIRST TIME LOGIN
+                if hasattr(profile, "is_new_user") and profile.is_new_user:
+                    profile.is_new_user = False
+                    profile.save()
+                    return redirect('home')
+
+                # RETURNING USER
+                if role == 'officer':
+                    return redirect('officer_dashboard')
+                else:
+                    return redirect('dashboard')
+
+            except Exception:
+                messages.error(request, "Profile error occurred.")
                 return redirect('dashboard')
 
         else:
             messages.error(request, "Invalid username or password.")
             return redirect('login')
 
-    return render(request, 'civicapp/login.html')
-
-
+    return render(request, "civicapp/login.html")
 # =========================
 # LOGOUT VIEW
 # =========================
@@ -123,11 +153,18 @@ def dashboard(request):
 
     user = request.user
 
-    total_issues = Issue.objects.filter(created_by=user).count()
+    total_issues = Issue.objects.filter(
+        created_by=user
+    ).count()
 
     pending_issues = Issue.objects.filter(
         created_by=user,
         status='pending'
+    ).count()
+
+    in_progress = Issue.objects.filter(
+        created_by=user,
+        status='in_progress'
     ).count()
 
     resolved_issues = Issue.objects.filter(
@@ -142,12 +179,16 @@ def dashboard(request):
     context = {
         'total_issues': total_issues,
         'pending_issues': pending_issues,
+        'in_progress': in_progress,
         'resolved_issues': resolved_issues,
         'my_issues': my_issues,
     }
 
-    return render(request, 'civicapp/dashboard.html', context)
-
+    return render(
+        request,
+        'civicapp/dashboard.html',
+        context
+    )
 
 # =========================
 # HOME
@@ -217,6 +258,7 @@ def issue_detail(request, id):
 # =========================
 # MY REPORTS
 # =========================
+
 @login_required
 def my_reports(request):
 
@@ -224,42 +266,58 @@ def my_reports(request):
         created_by=request.user
     ).order_by('-created_at')
 
-    return render(
-        request,
-        'civicapp/my_reports.html',
-        {'issues': issues}
-    )
+    return render(request, 'civicapp/my_reports.html', {'issues': issues})
 
 
 # =========================
 # PROFILE
 # =========================
 @login_required
-def profile_view(request):
+def profile(request):
 
-    user = request.user
+    profile = request.user.profile
 
-    total_issues = Issue.objects.filter(created_by=user).count()
+    total_issues = Issue.objects.filter(created_by=request.user).count()
 
     pending_issues = Issue.objects.filter(
-        created_by=user,
+        created_by=request.user,
         status='pending'
     ).count()
 
+    in_progress_issues = Issue.objects.filter(
+        created_by=request.user,
+        status='in_progress'
+    ).count()
+
     resolved_issues = Issue.objects.filter(
-        created_by=user,
+        created_by=request.user,
         status='resolved'
     ).count()
 
+    if request.method == "POST":
+        form = ProfileImageForm(
+            request.POST,
+            request.FILES,
+            instance=profile
+        )
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Profile photo updated successfully.")
+            return redirect('profile')
+
+    else:
+        form = ProfileImageForm(instance=profile)
+
     context = {
-        'user': user,
+        'form': form,
         'total_issues': total_issues,
         'pending_issues': pending_issues,
+        'in_progress_issues': in_progress_issues,
         'resolved_issues': resolved_issues,
     }
 
     return render(request, 'civicapp/profile.html', context)
-
 
 # =========================
 # UPDATE STATUS
@@ -331,6 +389,11 @@ def officer_dashboard(request):
         'in_progress': in_progress.count(),
         'resolved': resolved.count(),
     }
+    top_issues = Issue.objects.annotate(
+    vote_count=Count('votes')
+    ).order_by('-vote_count')[:5]
+
+    context['top_issues'] = top_issues
 
     return render(request, 'civicapp/officer_dashboard.html', context)
 
@@ -354,3 +417,66 @@ def support_issue(request, id):
         messages.warning(request, "You already support this issue.")
 
     return redirect('issue_detail', id=id)
+
+# =========================
+# EDIT ISSUE
+# =========================
+
+@login_required
+def edit_issue(request, issue_id):
+
+    issue = get_object_or_404(
+        Issue,
+        id=issue_id,
+        created_by=request.user
+    )
+
+    # optional safety rule: block editing resolved issues
+    if issue.status == "resolved":
+        messages.error(request, "Resolved issues cannot be edited.")
+        return redirect('my_reports')
+
+    if request.method == "POST":
+        form = IssueForm(request.POST, request.FILES, instance=issue)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Issue updated successfully.")
+            return redirect('my_reports')
+        else:
+            messages.error(request, "Please correct the errors.")
+
+    else:
+        form = IssueForm(instance=issue)
+
+    return render(request, 'civicapp/edit_issue.html', {
+        'form': form,
+        'issue': issue
+    })
+
+# =========================
+# DELETE ISSUE
+# =========================
+
+@login_required
+def delete_issue(request, issue_id):
+
+    issue = get_object_or_404(
+        Issue,
+        id=issue_id,
+        created_by=request.user
+    )
+
+    # optional safety rule (recommended)
+    if issue.status == "resolved":
+        messages.error(request, "Resolved issues cannot be deleted.")
+        return redirect('my_reports')
+
+    if request.method == "POST":
+        issue.delete()
+        messages.success(request, "Issue deleted successfully.")
+        return redirect('my_reports')
+
+    return render(request, 'civicapp/delete_issue.html', {
+        'issue': issue
+    })

@@ -49,21 +49,24 @@
 
 .pending {
     background: orange;
-    color:white;
+    color: white;
+}
+
+.in_progress {
+    background: #3498db;
+    color: white;
 }
 
 .resolved {
     background: green;
-    color:white;
+    color: white;
 }
 
 </style>
 
-
 <h2 class="dashboard-title">
     Welcome, {{ request.user.username }}
 </h2>
-
 
 <div class="cards">
 
@@ -74,7 +77,6 @@
         </div>
     </div>
 
-
     <div class="card">
         <h3>Pending</h3>
         <div class="number">
@@ -82,6 +84,12 @@
         </div>
     </div>
 
+    <div class="card">
+        <h3>In Progress</h3>
+        <div class="number">
+            {{ in_progress }}
+        </div>
+    </div>
 
     <div class="card">
         <h3>Resolved</h3>
@@ -92,16 +100,13 @@
 
 </div>
 
-
 <a href="{% url 'report_issue' %}">
     <button>
         Report New Issue
     </button>
 </a>
 
-
 <h2>Your Reports</h2>
-
 
 {% for issue in my_issues %}
 
@@ -114,23 +119,21 @@
     </p>
 
     <p>
-        📍 {{ issue.location }}
+        📍 {{ issue.ward }}, {{ issue.sub_county }}, {{ issue.county }}
     </p>
 
     <span class="status {{ issue.status }}">
-        {{ issue.status }}
+        {{ issue.get_status_display }}
     </span>
 
 </div>
 
-
 {% empty %}
 
 <p>
-You have not reported any issues yet.
+    You have not reported any issues yet.
 </p>
 
 {% endfor %}
-
 
 {% endblock %}

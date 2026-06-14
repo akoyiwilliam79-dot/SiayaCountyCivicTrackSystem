@@ -1,15 +1,19 @@
 from django import forms
-from .models import Issue
+from .models import *
+
 
 class IssueForm(forms.ModelForm):
 
     class Meta:
         model = Issue
+
         fields = [
             'title',
             'description',
             'category',
-            'location',
+            'county',
+            'sub_county',
+            'ward',
             'image'
         ]
 
@@ -17,20 +21,40 @@ class IssueForm(forms.ModelForm):
 
             'title': forms.TextInput(
                 attrs={
-                    'placeholder':'Example: Broken bridge near market'
+                    'placeholder': 'Example: Broken bridge near market'
                 }
             ),
 
             'description': forms.Textarea(
                 attrs={
-                    'placeholder':'Describe the problem clearly...'
+                    'placeholder': 'Describe the problem clearly...'
                 }
             ),
 
-            'location': forms.TextInput(
+            'county': forms.TextInput(
                 attrs={
-                    'placeholder':'Example: Ugenya Ward, Siaya'
+                    'placeholder': 'Example: Siaya County'
+                }
+            ),
+
+            'sub_county': forms.TextInput(
+                attrs={
+                    'placeholder': 'Example: Ugenya'
+                }
+            ),
+
+            'ward': forms.TextInput(
+                attrs={
+                    'placeholder': 'Example: Ukwala Ward'
                 }
             ),
 
         }
+
+
+
+class ProfileImageForm(forms.ModelForm):
+
+    class Meta:
+        model = Profile
+        fields = ['profile_image']

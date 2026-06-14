@@ -9,130 +9,131 @@
     color:#1f4e79;
 }
 
-
 .report-card {
-
     background:white;
     padding:20px;
     margin:15px 0;
-
     border-radius:10px;
-
-    box-shadow:
-    0 3px 10px rgba(0,0,0,0.1);
-
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
 }
-
 
 .report-card h3 {
-
     color:#1f4e79;
-
 }
-
 
 .info {
-
     color:#555;
     margin:8px 0;
-
 }
-
 
 .status {
-
     display:inline-block;
-
     padding:6px 12px;
-
     border-radius:5px;
-
     background:#f39c12;
-
     color:white;
-
 }
-
 
 .view-btn {
-
     display:inline-block;
-
     margin-top:10px;
-
     padding:8px 15px;
-
     background:#1f4e79;
-
     color:white;
-
     text-decoration:none;
-
     border-radius:6px;
-
 }
 
+.view-btn:hover {
+    background:#163a5a;
+}
+
+.edit-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #0578e3 !important;
+    color: #ffffff !important;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-right: 5px;
+    border: none;
+}
+
+.edit-btn:hover {
+    background-color: #067fe9 !important;
+    color: #ffffff !important;
+}
+
+.delete-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #c0392b;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-left: 5px;
+}
+
+.delete-btn:hover {
+    background: #a93226;
+}
 </style>
 
-
-
 <h2 class="page-title">
-My Reported Issues
+    My Reported Issues
 </h2>
-
 
 {% for issue in issues %}
 
-
 <div class="report-card">
 
-<h3>
-{{ issue.title }}
-</h3>
+    <h3>
+        {{ issue.title }}
+    </h3>
 
+    <p class="info">
+        📍 {{ issue.ward }}, {{ issue.sub_county }}, {{ issue.county }}
+    </p>
 
-<p class="info">
-📍 {{ issue.location }}
-</p>
+    <p class="info">
+        🏷 {{ issue.get_category_display }}
+    </p>
 
+    <p class="info">
+        📅 {{ issue.created_at }}
+    </p>
 
-<p class="info">
-🏷 {{ issue.category }}
-</p>
+    <span class="status">
+        {{ issue.get_status_display }}
+    </span>
 
+    <br>
 
-<p class="info">
-📅 {{ issue.created_at }}
-</p>
+    <a class="view-btn"
+       href="{% url 'issue_detail' issue.id %}">
+        View Details
+    </a><br><br>
+    {% if issue.status != "resolved" %}
+    <a href="{% url 'edit_issue' issue.id %}" class="edit-btn">
+        Edit
+    </a><br><br>
+    {% endif %}
 
-
-<span class="status">
-{{ issue.status }}
-</span>
-
-
-<br>
-
-
-<a class="view-btn"
-href="{% url 'issue_detail' issue.id %}">
-View Details
-</a>
-
-
+    {% if issue.status != "resolved" %}
+    <a href="{% url 'delete_issue' issue.id %}" class="delete-btn">
+        Delete
+    </a>
+    {% endif %}
 </div>
-
 
 {% empty %}
 
-
 <p style="text-align:center;">
-You have not submitted any issues yet.
+    You have not submitted any issues yet.
 </p>
 
-
 {% endfor %}
-
-
 
 {% endblock %}
