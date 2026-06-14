@@ -1,0 +1,138 @@
+{% extends 'civicapp/base.html' %}
+
+{% block content %}
+
+<style>
+
+.page-title {
+    text-align:center;
+    color:#1f4e79;
+}
+
+
+.report-card {
+
+    background:white;
+    padding:20px;
+    margin:15px 0;
+
+    border-radius:10px;
+
+    box-shadow:
+    0 3px 10px rgba(0,0,0,0.1);
+
+}
+
+
+.report-card h3 {
+
+    color:#1f4e79;
+
+}
+
+
+.info {
+
+    color:#555;
+    margin:8px 0;
+
+}
+
+
+.status {
+
+    display:inline-block;
+
+    padding:6px 12px;
+
+    border-radius:5px;
+
+    background:#f39c12;
+
+    color:white;
+
+}
+
+
+.view-btn {
+
+    display:inline-block;
+
+    margin-top:10px;
+
+    padding:8px 15px;
+
+    background:#1f4e79;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:6px;
+
+}
+
+</style>
+
+
+
+<h2 class="page-title">
+My Reported Issues
+</h2>
+
+
+{% for issue in issues %}
+
+
+<div class="report-card">
+
+<h3>
+{{ issue.title }}
+</h3>
+
+
+<p class="info">
+📍 {{ issue.location }}
+</p>
+
+
+<p class="info">
+🏷 {{ issue.category }}
+</p>
+
+
+<p class="info">
+📅 {{ issue.created_at }}
+</p>
+
+
+<span class="status">
+{{ issue.status }}
+</span>
+
+
+<br>
+
+
+<a class="view-btn"
+href="{% url 'issue_detail' issue.id %}">
+View Details
+</a>
+
+
+</div>
+
+
+{% empty %}
+
+
+<p style="text-align:center;">
+You have not submitted any issues yet.
+</p>
+
+
+{% endfor %}
+
+
+
+{% endblock %}

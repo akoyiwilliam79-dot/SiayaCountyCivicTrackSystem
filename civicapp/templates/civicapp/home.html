@@ -1,0 +1,170 @@
+{% extends 'civicapp/base.html' %}
+
+{% block content %}
+
+<style>
+
+.home {
+    text-align: center;
+}
+
+/* Hero */
+
+.hero {
+    padding: 40px 20px;
+}
+
+.hero h1 {
+    color: #1f4e79;
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    color:#555;
+    font-size:18px;
+    line-height:1.6;
+}
+
+/* Buttons */
+
+.actions {
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-top:30px;
+}
+
+.actions a {
+    text-decoration:none;
+}
+
+.primary-btn,
+.secondary-btn {
+    padding:14px 30px;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.primary-btn {
+    background:#1f4e79;
+    color:white;
+}
+
+.secondary-btn {
+    background:#555;
+    color:white;
+}
+
+.primary-btn:hover {
+    background:#163a5a;
+}
+
+.secondary-btn:hover {
+    background:#333;
+}
+
+/* Features */
+
+.section-title {
+    color:#1f4e79;
+    margin-top:40px;
+}
+
+.features {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+    margin-top:20px;
+}
+
+.feature-card {
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.feature-card h3 {
+    color:#1f4e79;
+}
+
+.feature-card p {
+    color:#555;
+}
+
+/* Impact section */
+
+.impact {
+    margin-top:40px;
+    background:#eef5ff;
+    padding:20px;
+    border-radius:10px;
+}
+
+</style>
+
+<div class="home">
+
+<!-- HERO -->
+<div class="hero">
+
+    <h1>County Civic Tracker</h1>
+
+    <p>
+        A digital platform connecting citizens and county services.
+        Report community issues, follow progress, and promote transparency.
+    </p>
+
+    <div class="actions">
+
+        {% if not user.is_authenticated %}
+            <a href="{% url 'register' %}">
+                <button class="primary-btn">
+                    Get Started
+                </button>
+            </a>
+        {% endif %}
+
+    </div>
+
+</div>
+
+<h2 class="section-title">What you can do</h2>
+
+<div class="features">
+
+    <div class="feature-card">
+        <h3>📍 Report Issues</h3>
+        <p>Report problems affecting your community including roads, water, health and infrastructure.</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>📊 Track Progress</h3>
+        <p>Follow reported issues and know whether they are pending, being handled, or resolved.</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>👥 Community Voice</h3>
+        <p>Allow residents to highlight problems and participate in improving their county.</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>🔎 Transparency</h3>
+        <p>View public reports and encourage accountability through open information.</p>
+    </div>
+
+</div>
+
+<div class="impact">
+    <h2>Building Better Communities</h2>
+    <p>
+        County Civic Tracker helps bridge the gap between citizens and local authorities by making community issues visible and trackable.
+    </p>
+</div>
+
+</div>
+
+{% endblock %}

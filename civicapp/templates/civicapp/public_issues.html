@@ -1,0 +1,232 @@
+{% extends 'civicapp/base.html' %}
+
+{% block content %}
+
+<style>
+
+.page-title{
+    text-align:center;
+    color:#1f4e79;
+    margin-bottom:30px;
+}
+
+.page-subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:30px;
+}
+
+.issue-grid{
+    display:grid;
+    gap:20px;
+}
+
+.issue-card{
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 3px 12px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.issue-card:hover{
+    transform:translateY(-3px);
+}
+
+.issue-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.badge{
+    padding:6px 12px;
+    border-radius:20px;
+    color:white;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.pending{
+    background:#f39c12;
+}
+
+.in_progress{
+    background:#3498db;
+}
+
+.resolved{
+    background:#27ae60;
+}
+
+.issue-title{
+    margin:10px 0;
+}
+
+.issue-title a{
+    text-decoration:none;
+    color:#1f4e79;
+}
+
+.issue-title a:hover{
+    text-decoration:underline;
+}
+
+.meta{
+    color:#666;
+    font-size:14px;
+    margin-bottom:10px;
+}
+
+.support-count{
+    display:inline-block;
+    background:#eef5fb;
+    color:#1f4e79;
+    padding:6px 12px;
+    border-radius:20px;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.issue-image{
+    width:100%;
+    max-height:250px;
+    object-fit:cover;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+.desc{
+    color:#444;
+    margin-top:15px;
+    line-height:1.6;
+}
+
+.footer{
+    margin-top:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:#777;
+    font-size:13px;
+}
+
+.view-btn{
+    text-decoration:none;
+    background:#1f4e79;
+    color:white;
+    padding:8px 15px;
+    border-radius:6px;
+}
+
+.view-btn:hover{
+    background:#163a5a;
+}
+
+.empty{
+    text-align:center;
+    color:#666;
+    padding:40px;
+}
+
+</style>
+
+
+<h2 class="page-title">
+    Public Issue Dashboard
+</h2>
+
+<p class="page-subtitle">
+    View and support issues reported by the community.
+</p>
+
+<div class="issue-grid">
+
+{% for issue in issues %}
+
+<div class="issue-card">
+
+    <div class="issue-header">
+
+        <span class="badge {{ issue.status }}">
+            {{ issue.get_status_display }}
+        </span>
+
+        <div class="support-count">
+            👍 {{ issue.vote_count }} Supporters
+        </div>
+
+    </div>
+
+    <h3 class="issue-title">
+        <a href="{% url 'issue_detail' issue.id %}">
+            {{ issue.title }}
+        </a>
+    </h3>
+
+    <div class="meta">
+        📍 {{ issue.location }}
+        |
+        🏷 {{ issue.get_category_display }}
+        |
+        👤 {{ issue.created_by.username }}
+    </div>
+
+    {% if issue.image %}
+        <img
+            src="{{ issue.image.url }}"
+            class="issue-image"
+            alt="{{ issue.title }}">
+    {% endif %}
+
+    <p class="desc">
+        {{ issue.description|truncatewords:30 }}
+    </p>
+
+    <div class="footer">
+
+        <span>
+            {{ issue.created_at|date:"M d, Y" }}
+        </span>
+
+        <a href="{% url 'issue_detail' issue.id %}"
+           class="view-btn">
+            View Details
+        </a>
+
+    </div>
+
+</div>
+
+{% empty %}
+
+<div class="empty">
+
+    <h3>No Issues Reported Yet</h3>
+
+    <p>
+        Be the first citizen to report a community issue.
+    </p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<div style="text-align:center; margin-top:20px;">
+
+    {% if issues.has_previous %}
+        <a href="?page={{ issues.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    <span>Page {{ issues.number }} of {{ issues.paginator.num_pages }}</span>
+
+    {% if issues.has_next %}
+        <a href="?page={{ issues.next_page_number }}">Next</a>
+    {% endif %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends 'civicapp/base.html' %}
+
+{% block content %}
+
+<style>
+
+.profile-container {
+    max-width: 700px;
+    margin: auto;
+}
+
+.profile-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.profile-avatar {
+    width: 90px;
+    height: 90px;
+    background: #1f4e79;
+    color: white;
+    font-size: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.stat-box {
+    background: #f4f6f9;
+    padding: 15px;
+    border-radius: 10px;
+    width: 30%;
+}
+
+.stat-box h3 {
+    color: #1f4e79;
+    margin: 0;
+}
+
+.stat-box p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.info {
+    margin-top: 15px;
+    color: #555;
+}
+
+button {
+    margin-top: 20px;
+}
+
+</style>
+
+<div class="profile-container">
+
+<div class="profile-card">
+
+    <div class="profile-avatar">
+        {{ user.username|first|upper }}
+    </div>
+
+    <h2>{{ user.username }}</h2>
+
+    <p class="info">
+        {{ user.email }}
+    </p>
+
+    <div class="stats">
+
+        <div class="stat-box">
+            <h3>Total</h3>
+            <p>{{ total_issues }}</p>
+        </div>
+
+        <div class="stat-box">
+            <h3>Pending</h3>
+            <p>{{ pending_issues }}</p>
+        </div>
+
+        <div class="stat-box">
+            <h3>Resolved</h3>
+            <p>{{ resolved_issues }}</p>
+        </div>
+
+    </div>
+
+    <a href="{% url 'my_reports' %}">
+        <button>
+            View My Reports
+        </button>
+    </a>
+
+</div>
+
+</div>
+
+{% endblock %}

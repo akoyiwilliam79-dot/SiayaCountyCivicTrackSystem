@@ -1,0 +1,130 @@
+{% extends 'civicapp/base.html' %}
+
+{% block content %}
+
+<style>
+
+.title {
+    text-align:center;
+    color:#1f4e79;
+}
+
+.stats {
+    display:flex;
+    gap:15px;
+    margin:20px 0;
+}
+
+.card {
+    flex:1;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+.card h3 {
+    color:#1f4e79;
+}
+
+.number {
+    font-size:28px;
+    font-weight:bold;
+}
+
+.issue {
+    background:white;
+    padding:15px;
+    margin:10px 0;
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.badge {
+    padding:5px 10px;
+    border-radius:5px;
+    color:white;
+    font-size:12px;
+}
+
+.pending { background: orange; }
+.in_progress { background: dodgerblue; }
+.resolved { background: green; }
+
+.actions {
+    margin-top:10px;
+}
+
+.btn {
+    padding:6px 10px;
+    background:#1f4e79;
+    color:white;
+    text-decoration:none;
+    border-radius:5px;
+    font-size:13px;
+}
+
+</style>
+
+
+<h2 class="title">
+Officer Dashboard
+</h2>
+
+
+<div class="stats">
+
+<div class="card">
+<h3>Pending</h3>
+<div class="number">{{ pending }}</div>
+</div>
+
+<div class="card">
+<h3>In Progress</h3>
+<div class="number">{{ in_progress }}</div>
+</div>
+
+<div class="card">
+<h3>Resolved</h3>
+<div class="number">{{ resolved }}</div>
+</div>
+
+</div>
+
+
+<h3>All Issues</h3>
+
+
+{% for issue in issues %}
+
+<div class="issue">
+
+<h3>{{ issue.title }}</h3>
+
+<p>📍 {{ issue.location }}</p>
+
+<p>🏷 {{ issue.category }}</p>
+
+<span class="badge {{ issue.status }}">
+    {{ issue.status|title }}
+</span>
+
+<div class="actions">
+
+<a href="{% url 'issue_detail' issue.id %}" class="btn">
+View
+</a>
+
+</div>
+
+</div>
+
+{% empty %}
+
+<p>No issues found.</p>
+
+{% endfor %}
+
+
+{% endblock %}

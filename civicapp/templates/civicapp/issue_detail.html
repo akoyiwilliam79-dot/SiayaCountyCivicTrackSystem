@@ -1,0 +1,332 @@
+{% extends 'civicapp/base.html' %}
+
+{% block content %}
+
+<style>
+
+.issue-wrapper{
+    max-width:900px;
+    margin:auto;
+}
+
+.issue-card{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.issue-title{
+    color:#1f4e79;
+    margin-bottom:10px;
+}
+
+.status{
+    display:inline-block;
+    padding:8px 16px;
+    border-radius:20px;
+    color:white;
+    font-weight:bold;
+    font-size:14px;
+}
+
+.pending{
+    background:#f39c12;
+}
+
+.in_progress{
+    background:#3498db;
+}
+
+.resolved{
+    background:#27ae60;
+}
+
+.meta-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+    margin-top:20px;
+}
+
+.meta-card{
+    background:#f8f9fa;
+    padding:15px;
+    border-radius:10px;
+}
+
+.meta-card strong{
+    display:block;
+    color:#1f4e79;
+    margin-bottom:5px;
+}
+
+.issue-image{
+    width:100%;
+    max-height:450px;
+    object-fit:cover;
+    border-radius:12px;
+    margin-top:20px;
+}
+
+.description{
+    margin-top:25px;
+    padding:20px;
+    background:#fafafa;
+    border-left:5px solid #1f4e79;
+    border-radius:8px;
+}
+
+.description h3{
+    margin-top:0;
+    color:#1f4e79;
+}
+
+.timeline{
+    margin-top:30px;
+}
+
+.timeline h3{
+    color:#1f4e79;
+}
+
+.timeline-item{
+    border-left:4px solid #1f4e79;
+    padding-left:15px;
+    margin-bottom:15px;
+}
+
+.timeline-date{
+    color:#888;
+    font-size:13px;
+}
+
+.support-box{
+    margin-top:30px;
+    padding:20px;
+    background:#f8f9fa;
+    border-radius:10px;
+}
+
+.support-box h3{
+    margin-top:0;
+    color:#1f4e79;
+}
+
+.btn{
+    display:inline-block;
+    padding:10px 18px;
+    border-radius:8px;
+    text-decoration:none;
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.primary{
+    background:#1f4e79;
+    color:white;
+}
+
+.primary:hover{
+    background:#163a5a;
+}
+
+.secondary{
+    background:#555;
+    color:white;
+}
+
+.secondary:hover{
+    background:#333;
+}
+
+.footer-actions{
+    margin-top:30px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.notice{
+    color:#777;
+}
+
+</style>
+
+
+<div class="issue-wrapper">
+
+    <div class="issue-card">
+
+        <h2 class="issue-title">
+            {{ issue.title }}
+        </h2>
+
+        <span class="status {{ issue.status }}">
+            {{ issue.get_status_display }}
+        </span>
+
+        <!-- META INFO -->
+
+        <div class="meta-grid">
+
+            <div class="meta-card">
+                <strong>Category</strong>
+                {{ issue.get_category_display }}
+            </div>
+
+            <div class="meta-card">
+                <strong>Location</strong>
+                {{ issue.location }}
+            </div>
+
+            <div class="meta-card">
+                <strong>Reported By</strong>
+                {{ issue.created_by.username }}
+            </div>
+
+            <div class="meta-card">
+                <strong>Date Reported</strong>
+                {{ issue.created_at|date:"M d, Y H:i" }}
+            </div>
+
+        </div>
+
+        <!-- IMAGE -->
+
+        {% if issue.image %}
+            <img src="{{ issue.image.url }}" class="issue-image">
+        {% endif %}
+
+        <!-- DESCRIPTION -->
+
+        <div class="description">
+
+            <h3>Issue Description</h3>
+
+            <p>
+                {{ issue.description }}
+            </p>
+
+        </div>
+
+        <!-- COMMUNITY SUPPORT -->
+
+        <div class="support-box">
+
+            <h3>Community Support</h3>
+
+            <p>
+                <strong>👍 Supporters:</strong>
+                {{ issue.votes.count }}
+            </p>
+
+            {% if user.is_authenticated %}
+
+                {% if has_supported %}
+
+                    <span style="color:green;font-weight:bold;">
+                        ✓ You support this issue
+                    </span>
+
+                {% else %}
+
+                    <a href="{% url 'support_issue' issue.id %}"
+                       class="btn primary">
+
+                        👍 Support Issue
+
+                    </a>
+
+                {% endif %}
+
+            {% else %}
+
+                <p class="notice">
+                    Login to support this issue.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+        <!-- ACTIVITY TIMELINE -->
+
+        <div class="timeline">
+
+            <h3>Activity Timeline</h3>
+
+            {% for log in issue.logs.all %}
+
+                <div class="timeline-item">
+
+                    <div class="timeline-date">
+                        {{ log.created_at|date:"M d, Y H:i" }}
+                    </div>
+
+                    <div>
+                        {{ log.message }}
+                    </div>
+
+                </div>
+
+            {% empty %}
+
+                <p class="notice">
+                    No activity recorded yet.
+                </p>
+
+            {% endfor %}
+
+        </div>
+
+        <!-- ACTION BUTTONS -->
+
+        <div class="footer-actions">
+
+            {% if user.is_authenticated %}
+
+                {% if user.profile.role == 'officer' %}
+
+                    {% if issue.status != 'resolved' %}
+
+                        <a href="{% url 'update_status' issue.id %}"
+                           class="btn primary">
+
+                            Advance Status
+
+                        </a>
+
+                    {% else %}
+
+                        <span style="color:green;font-weight:bold;">
+                            ✔ Issue Fully Resolved
+                        </span>
+
+                    {% endif %}
+
+                {% else %}
+
+                    <span class="notice">
+                        Only officers can update issue status.
+                    </span>
+
+                {% endif %}
+
+            {% endif %}
+
+            <a href="{% url 'public_issues' %}"
+               class="btn secondary">
+
+                Back to Issues
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

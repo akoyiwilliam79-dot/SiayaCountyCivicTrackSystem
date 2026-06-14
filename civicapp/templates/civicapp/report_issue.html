@@ -1,0 +1,245 @@
+{% extends 'civicapp/base.html' %}
+
+{% block content %}
+
+<style>
+
+.report-container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.report-container h2 {
+    text-align: center;
+    color: #1f4e79;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+
+.form-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+}
+
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+
+    width: 100%;
+    padding: 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 7px;
+
+    font-size: 15px;
+
+    box-sizing: border-box;
+}
+
+
+.form-group textarea {
+    height: 120px;
+    resize: none;
+}
+
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+
+    outline: none;
+    border-color: #1f4e79;
+
+}
+
+
+.upload-box {
+
+    background: #f4f6f9;
+    padding: 15px;
+    border-radius: 8px;
+
+}
+
+
+.submit-btn {
+
+    width: 100%;
+    padding: 14px;
+
+    background: #1f4e79;
+    color:white;
+
+    border:none;
+    border-radius:8px;
+
+    font-size:16px;
+    cursor:pointer;
+
+}
+
+
+.submit-btn:hover {
+
+    background:#163a5a;
+
+}
+
+
+.info-box {
+
+    margin-top:20px;
+    padding:15px;
+
+    background:#eef5ff;
+    border-left:5px solid #1f4e79;
+
+    border-radius:5px;
+
+    font-size:14px;
+
+}
+
+
+</style>
+
+
+
+<div class="report-container">
+
+
+<h2>Report Community Issue</h2>
+
+
+<p class="subtitle">
+    Help improve your community by reporting problems affecting residents.
+</p>
+
+
+
+<div class="form-card">
+
+
+<form method="POST" enctype="multipart/form-data">
+
+{% csrf_token %}
+
+
+
+<div class="form-group">
+
+<label>
+Issue Title
+</label>
+
+{{ form.title }}
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+Description
+</label>
+
+{{ form.description }}
+
+</div>
+
+
+
+
+<div class="form-group">
+
+<label>
+Category
+</label>
+
+{{ form.category }}
+
+</div>
+
+
+
+
+<div class="form-group">
+
+<label>
+Location
+</label>
+
+{{ form.location }}
+
+</div>
+
+
+
+<div class="form-group upload-box">
+
+<label>
+Attach Image (Optional)
+</label>
+
+{{ form.image }}
+
+</div>
+
+
+
+
+<button class="submit-btn" type="submit">
+
+Submit Report
+
+</button>
+
+
+</form>
+
+
+</div>
+
+
+
+<div class="info-box">
+
+<strong>Reporting tips:</strong>
+
+<ul>
+<li>Provide a clear issue title</li>
+<li>Include the exact location</li>
+<li>Add an image if possible</li>
+<li>Give enough details for officials to understand the problem</li>
+</ul>
+
+</div>
+
+
+</div>
+
+
+{% endblock %}

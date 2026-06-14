@@ -1,0 +1,136 @@
+{% extends 'civicapp/base.html' %}
+
+{% block content %}
+
+<style>
+
+.dashboard-title {
+    text-align: center;
+    color: #1f4e79;
+}
+
+.cards {
+    display: flex;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.card {
+    flex: 1;
+    background: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    color: #1f4e79;
+}
+
+.number {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.issue {
+    background: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.pending {
+    background: orange;
+    color:white;
+}
+
+.resolved {
+    background: green;
+    color:white;
+}
+
+</style>
+
+
+<h2 class="dashboard-title">
+    Welcome, {{ request.user.username }}
+</h2>
+
+
+<div class="cards">
+
+    <div class="card">
+        <h3>Total Issues</h3>
+        <div class="number">
+            {{ total_issues }}
+        </div>
+    </div>
+
+
+    <div class="card">
+        <h3>Pending</h3>
+        <div class="number">
+            {{ pending_issues }}
+        </div>
+    </div>
+
+
+    <div class="card">
+        <h3>Resolved</h3>
+        <div class="number">
+            {{ resolved_issues }}
+        </div>
+    </div>
+
+</div>
+
+
+<a href="{% url 'report_issue' %}">
+    <button>
+        Report New Issue
+    </button>
+</a>
+
+
+<h2>Your Reports</h2>
+
+
+{% for issue in my_issues %}
+
+<div class="issue">
+
+    <h3>{{ issue.title }}</h3>
+
+    <p>
+        {{ issue.description }}
+    </p>
+
+    <p>
+        📍 {{ issue.location }}
+    </p>
+
+    <span class="status {{ issue.status }}">
+        {{ issue.status }}
+    </span>
+
+</div>
+
+
+{% empty %}
+
+<p>
+You have not reported any issues yet.
+</p>
+
+{% endfor %}
+
+
+{% endblock %}
