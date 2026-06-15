@@ -11,6 +11,9 @@ from django.core.paginator import Paginator
 from .models import *
 from .forms import IssueForm, ProfileImageForm
 
+import logging
+
+logger = logging.getLogger(__name__)
 
 # =========================
 # REGISTER VIEW
@@ -51,12 +54,7 @@ def register_view(request):
             )
             return redirect('register')
 
-        # PASSWORD LENGTH CHECK
-        if len(password) < 8:
-            messages.error(
-                request,
-                "Password must be at least 8 characters long."
-            )
+      
             return redirect('register')
 
         # CREATE USER
@@ -140,6 +138,9 @@ def login_view(request):
 # LOGOUT VIEW
 # =========================
 def logout_view(request):
+    logger.info(
+    f"{request.user.username} logged out"
+    )
     logout(request)
     messages.success(request, "You have been logged out successfully.")
     return redirect('login')
@@ -210,6 +211,9 @@ def report_issue(request):
             issue = form.save(commit=False)
             issue.created_by = request.user
             issue.save()
+            logger.info(
+                 f"{request.user.username} created issue {issue.title}"
+            )
 
             messages.success(request, "Issue reported successfully.")
             return redirect('public_issues')
