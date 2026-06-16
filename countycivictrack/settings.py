@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY
 # =========================
 SECRET_KEY = config("SECRET_KEY")
-DEBUG = config("DEBUG", cast=bool, default=True)
+DEBUG = True  # set False in production
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
@@ -77,15 +77,12 @@ WSGI_APPLICATION = "countycivictrack.wsgi.application"
 # DATABASE
 # =========================
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": config("DB_NAME", default="civic_system"),
-        "USER": config("DB_USER", default="root"),
-        "PASSWORD": config("DB_PASSWORD", default=""),
-        "HOST": config("DB_HOST", default="127.0.0.1"),
-        "PORT": config("DB_PORT", default="3306"),
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 
 # =========================
@@ -111,10 +108,11 @@ USE_TZ = True
 # =========================
 # STATIC & MEDIA
 # =========================
-STATIC_URL = "/static/"
+STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
-MEDIA_URL = "/media/"
+MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 
@@ -129,7 +127,7 @@ LOGOUT_REDIRECT_URL = "/"
 # =========================
 # CUSTOM SETTINGS
 # =========================
-OFFICER_REGISTRATION_KEY = config("OFFICER_REGISTRATION_KEY")
+OFFICER_REGISTRATION_KEY = "COUNTY-2026"    
 
 
 # =========================

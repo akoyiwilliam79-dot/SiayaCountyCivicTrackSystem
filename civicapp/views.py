@@ -138,9 +138,7 @@ def login_view(request):
 # LOGOUT VIEW
 # =========================
 def logout_view(request):
-    logger.info(
-    f"{request.user.username} logged out"
-    )
+    
     logout(request)
     messages.success(request, "You have been logged out successfully.")
     return redirect('login')
@@ -210,9 +208,31 @@ def report_issue(request):
         if form.is_valid():
             issue = form.save(commit=False)
             issue.created_by = request.user
+
+            # =========================
+            # DUPLICATE CHECK (NEW)
+            # =========================
+
+            duplicate_issue = Issue.objects.filter(
+                title__icontains=issue.title,
+                category=issue.category,
+                county=issue.county,
+                sub_county=issue.sub_county,
+                ward=issue.ward,
+            ).exclude(created_by=request.user).first()
+
+            if duplicate_issue:
+                messages.error(
+                    request,
+                    "This issue already exists. You can only support the existing report."
+                )
+                return redirect('issue_detail', id=duplicate_issue.id)
+
+            # SAVE NEW ISSUE ONLY IF NO DUPLICATE
             issue.save()
+
             logger.info(
-                 f"{request.user.username} created issue {issue.title}"
+                f"{request.user.username} created issue {issue.title}"
             )
 
             messages.success(request, "Issue reported successfully.")
