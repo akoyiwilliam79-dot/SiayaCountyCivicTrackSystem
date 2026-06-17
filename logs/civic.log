@@ -1765,3 +1765,849 @@ C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, r
 Watching for file changes with StatReloader
 C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
 Watching for file changes with StatReloader
+willy created issue insecurity
+Not Found: /media/profiles/default.png
+Not Found: /media/profiles/default.png
+rozzy created issue Poor Roads
+rozzy created issue insecurity
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\countycivictrack\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\countycivictrack\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\countycivictrack\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\countycivictrack\settings.py changed, reloading.
+Watching for file changes with StatReloader
+buda created issue Poor Roads
+Internal Server Error: /issues/4/update/
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py", line 380, in update_status
+    send_mail(
+    ~~~~~~~~~^
+    subject=f"Issue Update: {issue.title}",
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    fail_silently=False,
+    ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\__init__.py", line 87, in send_mail
+    return mail.send()
+           ~~~~~~~~~^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 94, in open
+    self.connection.login(self.username, self.password)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 762, in login
+    raise last_exception
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 751, in login
+    (code, resp) = self.auth(
+                   ~~~~~~~~~^
+        authmethod, getattr(self, method_name),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        initial_response_ok=initial_response_ok)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 669, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5b1f17b1804b1-49230a96d14sm76373685e9.12 - gsmtp')
+C:\Users\user\Desktop\civic system\countycivictrack\countycivictrack\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\countycivictrack\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\countycivictrack\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\countycivictrack\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /issues/4/update/
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py", line 380, in update_status
+    send_mail(
+    ~~~~~~~~~^
+    subject=f"Issue Update: {issue.title}",
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    fail_silently=False,
+    ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\__init__.py", line 87, in send_mail
+    return mail.send()
+           ~~~~~~~~~^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 94, in open
+    self.connection.login(self.username, self.password)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 762, in login
+    raise last_exception
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 751, in login
+    (code, resp) = self.auth(
+                   ~~~~~~~~~^
+        authmethod, getattr(self, method_name),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        initial_response_ok=initial_response_ok)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 669, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5b1f17b1804b1-49230a58becsm76715385e9.7 - gsmtp')
+Not Found: /favicon.ico
+C:\Users\user\Desktop\civic system\countycivictrack\countycivictrack\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\countycivictrack\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\countycivictrack\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\countycivictrack\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\countycivictrack\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /issues/4/update/
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py", line 380, in update_status
+    send_mail(
+    ~~~~~~~~~^
+    subject=f"Issue Update: {issue.title}",
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    fail_silently=False,
+    ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\__init__.py", line 87, in send_mail
+    return mail.send()
+           ~~~~~~~~~^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 94, in open
+    self.connection.login(self.username, self.password)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 762, in login
+    raise last_exception
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 751, in login
+    (code, resp) = self.auth(
+                   ~~~~~~~~~^
+        authmethod, getattr(self, method_name),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        initial_response_ok=initial_response_ok)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 669, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5b1f17b1804b1-49233438eebsm8304065e9.0 - gsmtp')
+omboki created issue insecurity
+Internal Server Error: /issues/5/update/
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py", line 380, in update_status
+    send_mail(
+    ~~~~~~~~~^
+    subject=f"Issue Update: {issue.title}",
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    fail_silently=False,
+    ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\__init__.py", line 87, in send_mail
+    return mail.send()
+           ~~~~~~~~~^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 94, in open
+    self.connection.login(self.username, self.password)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 762, in login
+    raise last_exception
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 751, in login
+    (code, resp) = self.auth(
+                   ~~~~~~~~~^
+        authmethod, getattr(self, method_name),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        initial_response_ok=initial_response_ok)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 669, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5b1f17b1804b1-4922fa47d1csm98659425e9.4 - gsmtp')
+C:\Users\user\Desktop\civic system\countycivictrack\countycivictrack\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\countycivictrack\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /issues/5/update/
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py", line 380, in update_status
+    send_mail(
+    ~~~~~~~~~^
+    subject=f"Issue Update: {issue.title}",
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    fail_silently=False,
+    ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\__init__.py", line 87, in send_mail
+    return mail.send()
+           ~~~~~~~~~^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 92, in open
+    self.connection.starttls(context=self.ssl_context)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 791, in starttls
+    self.sock = context.wrap_socket(self.sock,
+                ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+                                    server_hostname=self._host)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sock=sock,
+        ^^^^^^^^^^
+    ...<5 lines>...
+        session=session
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\ssl.py", line 1076, in _create
+    self.do_handshake()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\ssl.py", line 1372, in do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+ssl.SSLEOFError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1081)
+Not Found: /favicon.ico
+Internal Server Error: /issues/5/update/
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py", line 380, in update_status
+    send_mail(
+    ~~~~~~~~~^
+    subject=f"Issue Update: {issue.title}",
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    fail_silently=False,
+    ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\__init__.py", line 87, in send_mail
+    return mail.send()
+           ~~~~~~~~~^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 85, in open
+    self.connection = self.connection_class(
+                      ~~~~~~~~~~~~~~~~~~~~~^
+        self.host, self.port, **connection_params
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 262, in __init__
+    (code, msg) = self.connect(host, port)
+                  ~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 348, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+                ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 319, in _get_socket
+    return socket.create_connection((host, port), timeout,
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+                                    self.source_address)
+                                    ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\socket.py", line 870, in create_connection
+    raise exceptions[0]
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\socket.py", line 855, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+Not Found: /favicon.ico
+C:\Users\user\Desktop\civic system\countycivictrack\countycivictrack\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /media/profiles/default.png
+Internal Server Error: /issues/1/update/
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py", line 380, in update_status
+    send_mail(
+    ~~~~~~~~~^
+    subject=f"Issue Update: {issue.title}",
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<19 lines>...
+    fail_silently=False,
+    ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\__init__.py", line 87, in send_mail
+    return mail.send()
+           ~~~~~~~~~^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 94, in open
+    self.connection.login(self.username, self.password)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 762, in login
+    raise last_exception
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 751, in login
+    (code, resp) = self.auth(
+                   ~~~~~~~~~^
+        authmethod, getattr(self, method_name),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        initial_response_ok=initial_response_ok)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 669, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5b1f17b1804b1-4922fa47da9sm144509925e9.5 - gsmtp')
+kris created issue education
+Internal Server Error: /issues/6/update/
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py", line 380, in update_status
+    send_mail(
+    ~~~~~~~~~^
+    subject=f"Issue Update: {issue.title}",
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<19 lines>...
+    fail_silently=False,
+    ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\__init__.py", line 87, in send_mail
+    return mail.send()
+           ~~~~~~~~~^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 94, in open
+    self.connection.login(self.username, self.password)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 762, in login
+    raise last_exception
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 751, in login
+    (code, resp) = self.auth(
+                   ~~~~~~~~~^
+        authmethod, getattr(self, method_name),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        initial_response_ok=initial_response_ok)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 669, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials ffacd0b85a97d-461eaa0d275sm5680631f8f.2 - gsmtp')
+Watching for file changes with StatReloader
+Internal Server Error: /issues/6/update/
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py", line 380, in update_status
+    send_mail(
+    ~~~~~~~~~^
+    subject=f"Issue Update: {issue.title}",
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<19 lines>...
+    fail_silently=False,
+    ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\__init__.py", line 87, in send_mail
+    return mail.send()
+           ~~~~~~~~~^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 94, in open
+    self.connection.login(self.username, self.password)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 762, in login
+    raise last_exception
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 751, in login
+    (code, resp) = self.auth(
+                   ~~~~~~~~~^
+        authmethod, getattr(self, method_name),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        initial_response_ok=initial_response_ok)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 669, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (534, b'5.7.9 Application-specific password required. For more information, go to\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor ffacd0b85a97d-4606f2b0c10sm48701785f8f.21 - gsmtp')
+Not Found: /favicon.ico
+C:\Users\user\Desktop\civic system\countycivictrack\countycivictrack\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /issues/6/update/
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py", line 380, in update_status
+    send_mail(
+    ~~~~~~~~~^
+    subject=f"Issue Update: {issue.title}",
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<19 lines>...
+    fail_silently=False,
+    ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\__init__.py", line 87, in send_mail
+    return mail.send()
+           ~~~~~~~~~^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 94, in open
+    self.connection.login(self.username, self.password)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 762, in login
+    raise last_exception
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 751, in login
+    (code, resp) = self.auth(
+                   ~~~~~~~~~^
+        authmethod, getattr(self, method_name),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        initial_response_ok=initial_response_ok)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 669, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (534, b'5.7.9 Application-specific password required. For more information, go to\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor ffacd0b85a97d-4606f2c5266sm55606199f8f.29 - gsmtp')
+Not Found: /favicon.ico
+Internal Server Error: /issues/6/update/
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py", line 380, in update_status
+    send_mail(
+    ~~~~~~~~~^
+    subject=f"Issue Update: {issue.title}",
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<19 lines>...
+    fail_silently=False,
+    ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\__init__.py", line 87, in send_mail
+    return mail.send()
+           ~~~~~~~~~^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 94, in open
+    self.connection.login(self.username, self.password)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 762, in login
+    raise last_exception
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 751, in login
+    (code, resp) = self.auth(
+                   ~~~~~~~~~^
+        authmethod, getattr(self, method_name),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        initial_response_ok=initial_response_ok)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 669, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (534, b'5.7.9 Application-specific password required. For more information, go to\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor 5b1f17b1804b1-49230a4ff67sm109454325e9.6 - gsmtp')
+Not Found: /favicon.ico
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /issues/6/update/
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py", line 383, in update_status
+        send_mail(
+        ~~~~~~~~~^
+            subject=f"Issue Update: {issue.title}",
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<24 lines>...
+            fail_silently=False,
+            ^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\__init__.py", line 87, in send_mail
+    return mail.send()
+           ~~~~~~~~~^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 94, in open
+    self.connection.login(self.username, self.password)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 762, in login
+    raise last_exception
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 751, in login
+    (code, resp) = self.auth(
+                   ~~~~~~~~~^
+        authmethod, getattr(self, method_name),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        initial_response_ok=initial_response_ok)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 669, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (534, b'5.7.9 Application-specific password required. For more information, go to\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor 5b1f17b1804b1-4922f9cd140sm113128865e9.0 - gsmtp')
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+Internal Server Error: /issues/2/update/
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py", line 383, in update_status
+        send_mail(
+        ~~~~~~~~~^
+            subject=f"Issue Update: {issue.title}",
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<24 lines>...
+            fail_silently=False,
+            ^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\__init__.py", line 87, in send_mail
+    return mail.send()
+           ~~~~~~~~~^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 94, in open
+    self.connection.login(self.username, self.password)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 762, in login
+    raise last_exception
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 751, in login
+    (code, resp) = self.auth(
+                   ~~~~~~~~~^
+        authmethod, getattr(self, method_name),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        initial_response_ok=initial_response_ok)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 669, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (534, b'5.7.9 Application-specific password required. For more information, go to\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor ffacd0b85a97d-4606f2ce361sm50615298f8f.31 - gsmtp')
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\user\Desktop\civic system\countycivictrack\countycivictrack\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /issues/2/update/
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py", line 383, in update_status
+    send_mail(
+    ~~~~~~~~~^
+        subject=f"Issue Update: {issue.title}",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<24 lines>...
+        fail_silently=False,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\__init__.py", line 87, in send_mail
+    return mail.send()
+           ~~~~~~~~~^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 94, in open
+    self.connection.login(self.username, self.password)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 762, in login
+    raise last_exception
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 751, in login
+    (code, resp) = self.auth(
+                   ~~~~~~~~~^
+        authmethod, getattr(self, method_name),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        initial_response_ok=initial_response_ok)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 669, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (534, b'5.7.9 Application-specific password required. For more information, go to\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor ffacd0b85a97d-4606f2c473bsm57501503f8f.28 - gsmtp')
+Not Found: /favicon.ico
+Internal Server Error: /issues/2/update/
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py", line 383, in update_status
+    send_mail(
+    ~~~~~~~~~^
+        subject=f"Issue Update: {issue.title}",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<24 lines>...
+        fail_silently=False,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\__init__.py", line 87, in send_mail
+    return mail.send()
+           ~~~~~~~~~^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\mail\backends\smtp.py", line 94, in open
+    self.connection.login(self.username, self.password)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 762, in login
+    raise last_exception
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 751, in login
+    (code, resp) = self.auth(
+                   ~~~~~~~~~^
+        authmethod, getattr(self, method_name),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        initial_response_ok=initial_response_ok)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\smtplib.py", line 669, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (534, b'5.7.9 Application-specific password required. For more information, go to\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor ffacd0b85a97d-4606f2c473bsm57589617f8f.28 - gsmtp')
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+Internal Server Error: /admin/auth/user/
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\response.py", line 111, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\response.py", line 89, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\contrib\admin\templatetags\base.py", line 45, in render
+    return super().render(context)
+           ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\library.py", line 271, in render
+    new_context = context.new(_dict)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\context.py", line 265, in new
+    new_context = super().new(values)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\context.py", line 110, in new
+    new_context = copy(self)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python314\Lib\copy.py", line 82, in copy
+    return copier(x)
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\context.py", line 158, in __copy__
+    duplicate = super().__copy__()
+  File "C:\Users\user\Desktop\civic system\civic\Lib\site-packages\django\template\context.py", line 39, in __copy__
+    duplicate.dicts = self.dicts[:]
+    ^^^^^^^^^^^^^^^
+AttributeError: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+vinny created issue Water Shortage
+C:\Users\user\Desktop\civic system\countycivictrack\civicapp\views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /media/profiles/default.png
+vinny created issue Water Shortage
+Watching for file changes with StatReloader
+victa created issue Water Shortage
+omboki created issue Poor Roads
+Watching for file changes with StatReloader

@@ -13,6 +13,9 @@ from .forms import IssueForm, ProfileImageForm
 
 import logging
 
+from django.core.mail import send_mail
+from django.conf import settings
+
 logger = logging.getLogger(__name__)
 
 # =========================
@@ -346,6 +349,7 @@ def profile(request):
 # =========================
 # UPDATE STATUS
 # =========================
+
 @login_required
 def update_status(request, id):
 
@@ -353,31 +357,75 @@ def update_status(request, id):
         messages.error(request, "Only officers can update issue status.")
         return redirect('issue_detail', id=id)
 
+
     issue = get_object_or_404(Issue, id=id)
 
-    old_status = issue.status
 
     if issue.status == 'pending':
         issue.status = 'in_progress'
-        message = "Status changed from Pending → In Progress"
+        log_message = "Status changed from Pending → In Progress"
 
     elif issue.status == 'in_progress':
         issue.status = 'resolved'
-        message = "Status changed from In Progress → Resolved"
+        log_message = "Status changed from In Progress → Resolved"
+
     else:
-        message = "No status change"
+        log_message = "No status change"
+
 
     issue.save()
 
+
     IssueLog.objects.create(
         issue=issue,
-        message=message
+        message=log_message
     )
 
-    messages.success(request, "Issue status updated successfully.")
+
+    # Send email notification
+
+    send_mail(
+        subject=f"Issue Update: {issue.title}",
+
+        message=f"""
+Hello {issue.created_by.username},
+
+Your issue has been updated.
+
+Issue:
+{issue.title}
+
+Updated By:
+Officer {request.user.username}
+
+New Status:
+{issue.status}
+
+Thank you for using Civic Track.
+
+Regards,
+County Civic Track Team
+""",
+
+        from_email=settings.EMAIL_HOST_USER,
+
+        recipient_list=[
+            issue.created_by.email,
+            "countycivictrack@gmail.com",
+        ],
+
+        fail_silently=False,
+    )
+
+
+    messages.success(
+        request,
+        "Issue updated and email notifications sent."
+    )
+
+
     return redirect('issue_detail', id=id)
-
-
+    
 # =========================
 # OFFICER REQUIRED DECORATOR
 # =========================
