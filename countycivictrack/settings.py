@@ -1,6 +1,9 @@
 from pathlib import Path
 from decouple import config
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # =========================
 # BASE DIRECTORY
@@ -178,3 +181,5 @@ EMAIL_HOST_USER = config("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")

@@ -1,3 +1,4 @@
+from .ai_moderator import check_report
 from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import User
@@ -16,7 +17,33 @@ import logging
 from django.core.mail import send_mail
 from django.conf import settings
 
+#AI
+from django.http import JsonResponse
+from .ai_title_generator import generate_title
+
 logger = logging.getLogger(__name__)
+
+
+# =========================
+# AI VIEW
+# =========================
+
+def suggest_title_ai(request):
+
+    text = request.GET.get("text", "")
+
+
+    title = generate_title(text)
+
+
+    return JsonResponse({
+        "title": title
+    })
+
+
+
+
+
 
 # =========================
 # REGISTER VIEW
@@ -201,19 +228,40 @@ def home(request):
 
 # =========================
 # REPORT ISSUE
-# =========================
-@login_required
+# =========================@login_required
 def report_issue(request):
 
     if request.method == "POST":
         form = IssueForm(request.POST, request.FILES)
 
         if form.is_valid():
+
             issue = form.save(commit=False)
             issue.created_by = request.user
 
             # =========================
-            # DUPLICATE CHECK (NEW)
+            # AI MODERATION LAYER
+            # =========================
+
+            review = check_report(
+                f"{issue.title} {issue.description}"
+            )
+
+            if not review["allowed"]:
+                messages.error(
+                    request,
+                    review["reason"]
+                )
+                return redirect('report_issue')
+
+            if review["suggestion"]:
+                messages.warning(
+                    request,
+                    f"Suggested professional title: {review['suggestion']}"
+                )
+
+            # =========================
+            # DUPLICATE CHECK
             # =========================
 
             duplicate_issue = Issue.objects.filter(
@@ -231,24 +279,37 @@ def report_issue(request):
                 )
                 return redirect('issue_detail', id=duplicate_issue.id)
 
-            # SAVE NEW ISSUE ONLY IF NO DUPLICATE
+            # =========================
+            # SAVE ISSUE
+            # =========================
+
             issue.save()
 
             logger.info(
                 f"{request.user.username} created issue {issue.title}"
             )
 
-            messages.success(request, "Issue reported successfully.")
+            messages.success(
+                request,
+                "Issue reported successfully."
+            )
+
             return redirect('public_issues')
 
         else:
-            messages.error(request, "Please correct the form errors.")
+            messages.error(
+                request,
+                "Please correct the form errors."
+            )
 
     else:
         form = IssueForm()
 
-    return render(request, 'civicapp/report_issue.html', {'form': form})
-
+    return render(
+        request,
+        'civicapp/report_issue.html',
+        {'form': form}
+    )
 
 # =========================
 # PUBLIC ISSUES
