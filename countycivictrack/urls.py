@@ -8,6 +8,9 @@ urlpatterns = [
     path('', include('civicapp.urls')),
 ]
 
-# ADD media handling AFTER urlpatterns is defined
+# Serve media files during development
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(
+        settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT
+    )

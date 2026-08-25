@@ -20,6 +20,7 @@ from django.conf import settings
 #AI
 from django.http import JsonResponse
 from .ai_title_generator import generate_title
+from .language_guard import check_language
 
 logger = logging.getLogger(__name__)
 
@@ -223,12 +224,41 @@ def dashboard(request):
 # HOME
 # =========================
 def home(request):
-    return render(request, 'civicapp/home.html')
 
+    context = {
 
+        "total_issues":
+        Issue.objects.count(),
+
+        "resolved_issues":
+        Issue.objects.filter(
+            status="resolved"
+        ).count(),
+
+        "active_issues":
+        Issue.objects.exclude(
+            status="resolved"
+        ).count(),
+
+        "total_users":
+        User.objects.count(),
+
+        "recent_issues":
+        Issue.objects.order_by(
+            "-created_at"
+        )[:5],
+
+    }
+
+    return render(
+        request,
+        "civicapp/home.html",
+        context
+    )
 # =========================
 # REPORT ISSUE
-# =========================@login_required
+# =========================
+@login_required
 def report_issue(request):
 
     if request.method == "POST":
@@ -239,6 +269,24 @@ def report_issue(request):
             issue = form.save(commit=False)
             issue.created_by = request.user
 
+
+            # =========================
+            # AI LANGUAGE GUARD
+            # =========================
+
+            language_check = check_language(
+                f"{issue.title} {issue.description}"
+            )
+
+
+            if not language_check["allowed"]:
+                messages.error(
+                    request,
+                    language_check["message"]
+                )
+                return redirect('report_issue')
+
+
             # =========================
             # AI MODERATION LAYER
             # =========================
@@ -247,6 +295,7 @@ def report_issue(request):
                 f"{issue.title} {issue.description}"
             )
 
+
             if not review["allowed"]:
                 messages.error(
                     request,
@@ -254,11 +303,13 @@ def report_issue(request):
                 )
                 return redirect('report_issue')
 
+
             if review["suggestion"]:
                 messages.warning(
                     request,
                     f"Suggested professional title: {review['suggestion']}"
                 )
+
 
             # =========================
             # DUPLICATE CHECK
@@ -272,12 +323,18 @@ def report_issue(request):
                 ward=issue.ward,
             ).exclude(created_by=request.user).first()
 
+
             if duplicate_issue:
                 messages.error(
                     request,
                     "This issue already exists. You can only support the existing report."
                 )
-                return redirect('issue_detail', id=duplicate_issue.id)
+
+                return redirect(
+                    'issue_detail',
+                    id=duplicate_issue.id
+                )
+
 
             # =========================
             # SAVE ISSUE
@@ -285,25 +342,32 @@ def report_issue(request):
 
             issue.save()
 
+
             logger.info(
                 f"{request.user.username} created issue {issue.title}"
             )
+
 
             messages.success(
                 request,
                 "Issue reported successfully."
             )
 
+
             return redirect('public_issues')
 
+
         else:
+
             messages.error(
                 request,
                 "Please correct the form errors."
             )
 
+
     else:
         form = IssueForm()
+
 
     return render(
         request,
