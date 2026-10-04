@@ -8,53 +8,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
+        /* =========================================
+           RESET
+        ========================================= */
+
         * {
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
         }
 
-        :root {
-            --primary: #0b5ed7;
-            --primary-dark: #084298;
-            --green: #198754;
-            --green-dark: #146c43;
-            --dark: #102a43;
-            --text: #243447;
-            --muted: #6b7c93;
-            --background: #f5f8fc;
-            --white: #ffffff;
-            --border: #e3eaf2;
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background:
-                radial-gradient(circle at top left, rgba(11, 94, 215, 0.07), transparent 30%),
-                #f5f8fc;
-            color: var(--text);
-            min-height: 100vh;
+            margin: 0;
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            background: #f6f8fb;
+            color: #243447;
             line-height: 1.6;
         }
 
-        /* =========================
-           NAVBAR
-        ========================== */
+        /* =========================================
+           NAVIGATION
+        ========================================= */
 
         .navbar {
-            min-height: 72px;
-            padding: 0 6%;
-            background: rgba(255, 255, 255, 0.96);
-            border-bottom: 1px solid var(--border);
+            background: #ffffff;
+            color: #243447;
+            min-height: 70px;
+            padding: 12px 5%;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            gap: 30px;
+            align-items: center;
+            gap: 25px;
+
+            border-bottom: 1px solid #e7ebf0;
+
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(16, 42, 67, 0.07);
-            backdrop-filter: blur(12px);
         }
 
         /* BRAND */
@@ -67,17 +59,21 @@
         }
 
         .navbar strong {
-            color: var(--dark);
-            font-size: 22px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
+            color: #163a5f;
+            font-size: 21px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
         }
 
         .navbar strong::before {
-            content: "●";
-            color: var(--green);
-            font-size: 17px;
+            content: "";
+            display: inline-block;
+            width: 9px;
+            height: 9px;
+            background: #198754;
+            border-radius: 50%;
             margin-right: 7px;
+            vertical-align: middle;
         }
 
         /* NAV LINKS */
@@ -85,245 +81,334 @@
         .navbar > div:last-child {
             display: flex;
             align-items: center;
-            flex-wrap: wrap;
             justify-content: flex-end;
+            flex-wrap: wrap;
             gap: 3px;
         }
 
         .navbar a {
-            color: #52667a;
+            color: #526273;
             text-decoration: none;
-            padding: 9px 12px;
-            border-radius: 8px;
+            padding: 8px 11px;
+            border-radius: 7px;
             font-size: 13px;
             font-weight: 600;
-            transition: 0.25s ease;
+            transition: background 0.2s ease, color 0.2s ease;
         }
 
         .navbar a:hover {
-            color: var(--primary);
-            background: #edf4ff;
+            color: #0d6efd;
+            background: #f0f5fb;
         }
 
-        /* ROLE BADGES */
+        /* =========================================
+           ROLE BADGES
+        ========================================= */
 
         .role-badge {
-            padding: 4px 10px;
-            border-radius: 30px;
+            margin-left: 4px;
+            padding: 4px 9px;
+            border-radius: 20px;
             font-size: 10px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.4px;
         }
 
         .officer {
-            color: #0f5132;
-            background: #d1e7dd;
-            border: 1px solid #a3cfbb;
+            background: #e7f6ed;
+            color: #146c43;
+            border: 1px solid #c8ead6;
         }
 
         .citizen {
-            color: #41464b;
-            background: #e9ecef;
-            border: 1px solid #ced4da;
+            background: #eef1f4;
+            color: #5c6773;
+            border: 1px solid #dce1e6;
         }
 
-        /* =========================
-           MAIN CONTENT
-        ========================== */
+        /* =========================================
+           MAIN CONTENT AREA
+        ========================================= */
 
         .container {
-            width: min(1150px, calc(100% - 40px));
-            margin: 38px auto;
-            min-height: 500px;
-            background: var(--white);
-            padding: 40px;
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            box-shadow:
-                0 10px 35px rgba(16, 42, 67, 0.07),
-                0 2px 8px rgba(16, 42, 67, 0.03);
+            width: min(1100px, calc(100% - 40px));
+            margin: 32px auto 50px;
+
+            background: #ffffff;
+
+            padding: 34px;
+
+            border: 1px solid #e7ebf0;
+            border-radius: 12px;
+
+            box-shadow: 0 4px 18px rgba(30, 55, 80, 0.05);
+
+            min-height: 450px;
         }
 
-        /* =========================
+        /* =========================================
            TYPOGRAPHY
-        ========================== */
+        ========================================= */
 
         h1,
         h2,
         h3,
         h4 {
-            color: var(--dark);
-            line-height: 1.25;
+            color: #163a5f;
+            line-height: 1.3;
         }
 
         h1 {
-            font-size: 38px;
+            font-size: 34px;
+            margin-bottom: 14px;
         }
 
         h2 {
-            font-size: 28px;
+            font-size: 27px;
+            margin-bottom: 12px;
         }
 
         h3 {
             font-size: 21px;
         }
 
-        p {
-            color: var(--muted);
+        h4 {
+            font-size: 17px;
         }
 
-        /* =========================
+        p {
+            color: #64748b;
+        }
+
+        /* =========================================
            BUTTONS
-        ========================== */
+        ========================================= */
 
         button,
         .btn {
             display: inline-block;
-            padding: 11px 20px;
+
+            padding: 10px 18px;
+
+            background: #0d6efd;
+            color: #ffffff;
+
             border: none;
-            border-radius: 9px;
-            background: linear-gradient(
-                135deg,
-                var(--primary),
-                var(--primary-dark)
-            );
-            color: white;
+            border-radius: 7px;
+
+            font-family: inherit;
             font-size: 14px;
-            font-weight: 700;
+            font-weight: 600;
+
             cursor: pointer;
             text-decoration: none;
-            transition: 0.25s ease;
-            box-shadow: 0 5px 15px rgba(11, 94, 215, 0.18);
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
         }
 
         button:hover,
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(11, 94, 215, 0.25);
+            background: #0b5ed7;
+            transform: translateY(-1px);
         }
 
-        /* =========================
+        /* =========================================
            FORMS
-        ========================== */
+        ========================================= */
 
         input,
         textarea,
         select {
             width: 100%;
             max-width: 100%;
-            padding: 12px 14px;
-            border: 1px solid #d8e1eb;
-            border-radius: 9px;
-            background: #fbfcfe;
-            color: var(--text);
+
+            padding: 11px 13px;
+
+            background: #ffffff;
+
+            border: 1px solid #d8dee6;
+            border-radius: 7px;
+
+            color: #243447;
             font-family: inherit;
-            transition: 0.2s ease;
+            font-size: 14px;
+
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
         }
 
-        input:hover,
-        textarea:hover,
-        select:hover {
-            border-color: #b9c8d8;
+        input::placeholder,
+        textarea::placeholder {
+            color: #9aa6b2;
         }
 
         input:focus,
         textarea:focus,
         select:focus {
             outline: none;
-            background: white;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(11, 94, 215, 0.1);
+
+            border-color: #0d6efd;
+
+            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.09);
         }
 
-        /* =========================
+        /* =========================================
            MESSAGE SYSTEM
-        ========================== */
+        ========================================= */
 
         .alert {
-            width: min(1150px, calc(100% - 40px));
-            padding: 14px 18px;
-            margin: 20px auto;
-            border-radius: 10px;
+            width: min(1100px, calc(100% - 40px));
+
+            padding: 12px 16px;
+
+            margin: 18px auto;
+
+            border-radius: 8px;
+
             font-size: 14px;
-            font-weight: 700;
+            font-weight: 600;
+
             text-align: center;
+
             border: 1px solid transparent;
-            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.05);
+
             animation: slideDown 0.3s ease;
         }
 
         .alert.success {
-            background: #d1e7dd;
-            color: #0f5132;
-            border-color: #a3cfbb;
+            background: #e8f6ee;
+            color: #146c43;
+            border-color: #c8ead6;
         }
 
         .alert.error {
-            background: #f8d7da;
-            color: #842029;
-            border-color: #f1aeb5;
+            background: #fbe9eb;
+            color: #b02a37;
+            border-color: #f3c2c7;
         }
 
         .alert.warning {
-            background: #fff3cd;
-            color: #664d03;
-            border-color: #ffecb5;
+            background: #fff7df;
+            color: #856404;
+            border-color: #ffe8a1;
         }
 
         .alert.info {
-            background: #cff4fc;
+            background: #e9f6fb;
             color: #055160;
-            border-color: #9eeaf9;
+            border-color: #bee5eb;
         }
 
         @keyframes slideDown {
+
             from {
                 opacity: 0;
-                transform: translateY(-12px);
+                transform: translateY(-8px);
             }
 
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
+
         }
 
-        /* =========================
-           LINKS
-        ========================== */
+        /* =========================================
+           GENERAL CONTENT HELPERS
+        ========================================= */
 
-        a {
-            color: var(--primary);
+        img {
+            max-width: 100%;
+            height: auto;
         }
 
-        /* =========================
-           RESPONSIVE
-        ========================== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-        @media (max-width: 1050px) {
+        table th {
+            background: #f5f7fa;
+            color: #394b5f;
+            font-weight: 700;
+        }
+
+        table th,
+        table td {
+            padding: 11px 13px;
+            border-bottom: 1px solid #e7ebf0;
+            text-align: left;
+        }
+
+        table tr:hover td {
+            background: #fafbfd;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e7ebf0;
+            margin: 25px 0;
+        }
+
+        /* =========================================
+           EXISTING RESPONSIVE HELPERS
+        ========================================= */
+
+        .meta-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .footer-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 950px) {
 
             .navbar {
-                padding: 15px 25px;
+                padding: 12px 25px;
             }
 
             .navbar > div:last-child {
-                gap: 0;
+                justify-content: flex-end;
             }
 
             .navbar a {
-                padding: 8px 9px;
+                padding: 7px 8px;
                 font-size: 12px;
             }
+
+            .container {
+                width: calc(100% - 30px);
+                padding: 28px;
+            }
+
         }
 
-        @media (max-width: 850px) {
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 768px) {
 
             .navbar {
                 position: relative;
+
                 flex-direction: column;
-                padding: 18px 15px;
-                gap: 15px;
+
+                padding: 17px 15px;
+
+                gap: 13px;
+
+                text-align: center;
             }
 
             .navbar > div:first-child {
@@ -331,50 +416,37 @@
             }
 
             .navbar > div:last-child {
+                width: 100%;
                 justify-content: center;
-                text-align: center;
             }
 
             .navbar a {
                 display: inline-block;
                 margin: 2px;
+                padding: 7px 9px;
+                font-size: 12px;
             }
 
             .container {
-                width: calc(100% - 30px);
-                margin: 25px auto;
-                padding: 25px;
-                border-radius: 15px;
+                width: 94%;
+
+                margin: 20px auto 35px;
+
+                padding: 20px;
+
+                border-radius: 10px;
             }
 
             h1 {
-                font-size: 31px;
+                font-size: 29px;
             }
 
             h2 {
                 font-size: 24px;
             }
-        }
 
-        @media (max-width: 600px) {
-
-            .navbar strong {
-                font-size: 20px;
-            }
-
-            .navbar a {
-                font-size: 12px;
-                padding: 7px 8px;
-            }
-
-            .container {
-                width: 94%;
-                padding: 18px;
-                margin: 18px auto;
-            }
-
-            .alert {
-                width: 94%;
+            h3 {
+                font-size: 19px;
             }
 
             .meta-grid {
@@ -389,27 +461,38 @@
                 width: 100%;
                 text-align: center;
             }
+
         }
 
-        @media (max-width: 400px) {
+        /* =========================================
+           SMALL PHONES
+        ========================================= */
+
+        @media (max-width: 480px) {
 
             .navbar strong {
-                font-size: 18px;
-            }
-
-            .role-badge {
-                font-size: 9px;
-                padding: 3px 8px;
+                font-size: 19px;
             }
 
             .navbar a {
                 font-size: 11px;
-                padding: 6px;
+                padding: 6px 7px;
+            }
+
+            .role-badge {
+                font-size: 9px;
+                padding: 3px 7px;
             }
 
             .container {
-                padding: 15px;
+                width: 95%;
+                padding: 16px;
             }
+
+            .alert {
+                width: 95%;
+            }
+
         }
     </style>
 
@@ -419,43 +502,92 @@
 <body>
 
 <!-- NAVBAR -->
+
 <div class="navbar">
 
     <div>
+
         <strong>Civic Tracker</strong>
 
         {% if user.is_authenticated and user.profile %}
+
             {% if user.profile.role == 'officer' %}
-                <span class="role-badge officer">Officer</span>
+
+                <span class="role-badge officer">
+                    Officer
+                </span>
+
             {% else %}
-                <span class="role-badge citizen">Citizen</span>
+
+                <span class="role-badge citizen">
+                    Citizen
+                </span>
+
             {% endif %}
+
         {% endif %}
+
     </div>
+
 
     <div>
 
         {% if user.is_authenticated %}
 
-            <a href="{% url 'home' %}">Home</a>
-            <a href="{% url 'dashboard' %}">Dashboard</a>
-            <a href="{% url 'public_issues' %}">Public Issues</a>
-            <a href="{% url 'report_issue' %}">Report Issue</a>
-            <a href="{% url 'my_reports' %}">My Reports</a>
-            <a href="{% url 'profile' %}">Profile</a>
+            <a href="{% url 'home' %}">
+                Home
+            </a>
+
+            <a href="{% url 'dashboard' %}">
+                Dashboard
+            </a>
+
+            <a href="{% url 'public_issues' %}">
+                Public Issues
+            </a>
+
+            <a href="{% url 'report_issue' %}">
+                Report Issue
+            </a>
+
+            <a href="{% url 'my_reports' %}">
+                My Reports
+            </a>
+
+            <a href="{% url 'profile' %}">
+                Profile
+            </a>
 
             {% if user.profile.role == 'officer' %}
-                <a href="{% url 'officer_dashboard' %}">Officer Panel</a>
+
+                <a href="{% url 'officer_dashboard' %}">
+                    Officer Panel
+                </a>
+
             {% endif %}
 
-            <a href="{% url 'logout' %}">Logout</a>
+            <a href="{% url 'logout' %}">
+                Logout
+            </a>
+
 
         {% else %}
 
-            <a href="{% url 'home' %}">Home</a>
-            <a href="{% url 'login' %}">Login</a>
-            <a href="{% url 'register' %}">Register</a>
-            <a href="{% url 'public_issues' %}">Public Issues</a>
+            <a href="{% url 'home' %}">
+                Home
+            </a>
+
+            <a href="{% url 'login' %}">
+                Login
+            </a>
+
+            <a href="{% url 'register' %}">
+                Register
+            </a>
+
+            <a href="{% url 'public_issues' %}">
+                Public Issues
+            </a>
 
         {% endif %}
 
@@ -463,18 +595,24 @@
 
 </div>
 
+
 <!-- MESSAGES (GLOBAL FIX) -->
+
 {% if messages %}
 
     {% for message in messages %}
+
         <div class="alert {{ message.tags }}">
             {{ message }}
         </div>
+
     {% endfor %}
 
 {% endif %}
 
+
 <!-- AUTO FADE MESSAGES -->
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -483,12 +621,19 @@ document.addEventListener("DOMContentLoaded", function () {
     alerts.forEach((alert) => {
 
         setTimeout(() => {
-            alert.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+
+            alert.style.transition =
+                "opacity 0.6s ease, transform 0.6s ease";
+
             alert.style.opacity = "0";
-            alert.style.transform = "translateY(-10px)";
+
+            alert.style.transform =
+                "translateY(-10px)";
 
             setTimeout(() => {
+
                 alert.remove();
+
             }, 600);
 
         }, 3500);
@@ -498,11 +643,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+
 <!-- PAGE CONTENT -->
+
 <div class="container">
+
     {% block content %}
+
     {% endblock %}
+
 </div>
+
 
 </body>
 </html>
