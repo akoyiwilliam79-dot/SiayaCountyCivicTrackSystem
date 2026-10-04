@@ -78,10 +78,9 @@ class Profile(models.Model):
     )
 
     profile_image = models.ImageField(
-    upload_to='profiles/',
-    blank=True,
-    null=True,
-    default='profiles/default.png'
+        upload_to='profiles/',
+        blank=True,
+        null=True
     )
     is_new_user = models.BooleanField(default=True)
 

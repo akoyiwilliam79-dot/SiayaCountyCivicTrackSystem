@@ -1,362 +1,170 @@
 {% extends 'civicapp/base.html' %}
-{% load static %}
+
 {% block content %}
-
-<section class="hero-section">
-
-    <div class="hero-content">
-
-        <h1>Siaya County Civic Track</h1>
-
-        <h2>
-            Report Issues. Track Progress. Improve Your Community.
-        </h2>
-
-        <p>
-            Civic Track empowers citizens to report public service issues,
-            monitor progress, and promote accountability in local government.
-        </p>
-
-        <div class="hero-buttons">
-
-            <a href="{% url 'report_issue' %}" class="btn btn-primary btn-lg">
-                Report an Issue
-            </a>
-
-            <a href="{% url 'public_issues' %}" class="btn btn-outline-light btn-lg">
-                View Public Issues
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<section class="stats-section">
-
-    <div class="stat-card">
-        <h2>{{ total_issues|default:"0" }}</h2>
-        <p>Total Issues Reported</p>
-    </div>
-
-    <div class="stat-card">
-        <h2>{{ resolved_issues|default:"0" }}</h2>
-        <p>Resolved Issues</p>
-    </div>
-
-    <div class="stat-card">
-        <h2>{{ active_issues|default:"0" }}</h2>
-        <p>Issues In Progress</p>
-    </div>
-
-    <div class="stat-card">
-        <h2>{{ total_users|default:"0" }}</h2>
-        <p>Registered Citizens</p>
-    </div>
-
-</section>
-
-
-<section class="category-section">
-
-    <h2>Issue Categories</h2>
-
-    <div class="category-grid">
-
-        <div class="category-card">
-            🚧
-            <h4>Roads & Infrastructure</h4>
-        </div>
-
-        <div class="category-card">
-            💧
-            <h4>Water & Sanitation</h4>
-        </div>
-
-        <div class="category-card">
-            🗑️
-            <h4>Waste Management</h4>
-        </div>
-
-        <div class="category-card">
-            💡
-            <h4>Street Lighting</h4>
-        </div>
-
-        <div class="category-card">
-            🏥
-            <h4>Public Facilities</h4>
-        </div>
-
-        <div class="category-card">
-            🌳
-            <h4>Environment</h4>
-        </div>
-
-    </div>
-
-</section>
-
-
-<section class="recent-section">
-
-    <h2>Recent Community Reports</h2>
-
-    {% if recent_issues %}
-
-        {% for issue in recent_issues %}
-
-        <div class="issue-card">
-
-            <h4>{{ issue.title }}</h4>
-
-            <p>
-                {{ issue.description|truncatewords:25 }}
-            </p>
-
-            <span class="badge bg-primary">
-                {{ issue.status }}
-            </span>
-
-        </div>
-
-        {% endfor %}
-
-    {% else %}
-
-        <p>No issues reported yet.</p>
-
-    {% endif %}
-
-</section>
-
-
-<section class="transparency-section">
-
-    <h2>Transparent Governance</h2>
-
-    <p>
-        Every report submitted through Civic Track can be tracked
-        from submission to resolution. Citizens can monitor progress,
-        support existing issues, and promote accountability in service delivery.
-    </p>
-
-</section>
-
-
-<section class="cta-section">
-
-    <h2>Make Your Voice Count</h2>
-
-    <p>
-        Help improve your community by reporting issues that matter.
-    </p>
-
-    <a href="{% url 'report_issue' %}" class="btn btn-success btn-lg">
-        Report an Issue Now
-    </a>
-
-</section>
-
 
 <style>
 
-.hero-section{
-
-    background:linear-gradient(
-        135deg,
-        #0d6efd,
-        #084298
-    );
-
-    color:white;
-
-    padding:80px 20px;
-
-    text-align:center;
-
-    border-radius:15px;
-
-    margin-bottom:40px;
+.home {
+    text-align: center;
 }
 
+/* Hero */
 
-.hero-content{
-
-    max-width:800px;
-
-    margin:auto;
+.hero {
+    padding: 40px 20px;
 }
 
-
-.hero-content h1{
-
-    font-size:3rem;
-
-    font-weight:bold;
+.hero h1 {
+    color: #1f4e79;
+    font-size: 38px;
+    margin-bottom: 15px;
 }
 
-
-.hero-content h2{
-
-    margin-top:15px;
-
-    margin-bottom:20px;
+.hero p {
+    color:#555;
+    font-size:18px;
+    line-height:1.6;
 }
 
+/* Buttons */
 
-.hero-buttons{
-
+.actions {
+    display:flex;
+    justify-content:center;
+    gap:15px;
     margin-top:30px;
 }
 
-
-.stats-section{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(220px,1fr));
-
-    gap:20px;
-
-    margin-bottom:50px;
+.actions a {
+    text-decoration:none;
 }
 
-
-.stat-card{
-
-    background:white;
-
-    padding:25px;
-
-    text-align:center;
-
-    border-radius:12px;
-
-    box-shadow:
-    0 5px 15px rgba(0,0,0,0.1);
+.primary-btn,
+.secondary-btn {
+    padding:14px 30px;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
 }
 
-
-.stat-card h2{
-
-    color:#0d6efd;
-
-    font-weight:bold;
-}
-
-
-.category-section{
-
-    margin-bottom:50px;
-}
-
-
-.category-section h2{
-
-    text-align:center;
-
-    margin-bottom:30px;
-}
-
-
-.category-grid{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(220px,1fr));
-
-    gap:20px;
-}
-
-
-.category-card{
-
-    background:white;
-
-    padding:25px;
-
-    text-align:center;
-
-    border-radius:12px;
-
-    font-size:2rem;
-
-    box-shadow:
-    0 5px 15px rgba(0,0,0,0.08);
-}
-
-
-.category-card h4{
-
-    margin-top:10px;
-
-    font-size:1rem;
-}
-
-
-.recent-section{
-
-    margin-bottom:50px;
-}
-
-
-.recent-section h2{
-
-    text-align:center;
-
-    margin-bottom:25px;
-}
-
-
-.issue-card{
-
-    background:white;
-
-    padding:20px;
-
-    margin-bottom:15px;
-
-    border-radius:10px;
-
-    box-shadow:
-    0 5px 15px rgba(0,0,0,0.08);
-}
-
-
-.transparency-section{
-
-    background:#f8f9fa;
-
-    padding:40px;
-
-    border-radius:12px;
-
-    text-align:center;
-
-    margin-bottom:50px;
-}
-
-
-.cta-section{
-
-    background:#198754;
-
+.primary-btn {
+    background:#1f4e79;
     color:white;
+}
 
-    text-align:center;
+.secondary-btn {
+    background:#555;
+    color:white;
+}
 
-    padding:50px 20px;
+.primary-btn:hover {
+    background:#163a5a;
+}
 
-    border-radius:15px;
+.secondary-btn:hover {
+    background:#333;
+}
 
-    margin-bottom:40px;
+/* Features */
+
+.section-title {
+    color:#1f4e79;
+    margin-top:40px;
+}
+
+.features {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+    margin-top:20px;
+}
+
+.feature-card {
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.feature-card h3 {
+    color:#1f4e79;
+}
+
+.feature-card p {
+    color:#555;
+}
+
+/* Impact section */
+
+.impact {
+    margin-top:40px;
+    background:#eef5ff;
+    padding:20px;
+    border-radius:10px;
 }
 
 </style>
+
+<div class="home">
+
+<!-- HERO -->
+<div class="hero">
+
+    <h1>County Civic Tracker</h1>
+
+    <p>
+        A digital platform connecting citizens and county services.
+        Report community issues, follow progress, and promote transparency.
+    </p>
+
+    <div class="actions">
+
+        {% if not user.is_authenticated %}
+            <a href="{% url 'register' %}">
+                <button class="primary-btn">
+                    Get Started
+                </button>
+            </a>
+        {% endif %}
+
+    </div>
+
+</div>
+
+<h2 class="section-title">What you can do</h2>
+
+<div class="features">
+
+    <div class="feature-card">
+        <h3>📍 Report Issues</h3>
+        <p>Report problems affecting your community including roads, water, health and infrastructure.</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>📊 Track Progress</h3>
+        <p>Follow reported issues and know whether they are pending, being handled, or resolved.</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>👥 Community Voice</h3>
+        <p>Allow residents to highlight problems and participate in improving their county.</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>🔎 Transparency</h3>
+        <p>View public reports and encourage accountability through open information.</p>
+    </div>
+
+</div>
+
+<div class="impact">
+    <h2>Building Better Communities</h2>
+    <p>
+        County Civic Tracker helps bridge the gap between citizens and local authorities by making community issues visible and trackable.
+    </p>
+</div>
+
+</div>
 
 {% endblock %}

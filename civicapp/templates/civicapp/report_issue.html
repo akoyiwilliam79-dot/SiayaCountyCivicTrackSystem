@@ -21,6 +21,7 @@
     margin-bottom: 25px;
 }
 
+
 .form-card {
     background: white;
     padding: 30px;
@@ -28,15 +29,17 @@
     box-shadow: 0 3px 12px rgba(0,0,0,0.1);
 }
 
+
 .form-group {
     margin-bottom: 15px;
 }
 
+
 .form-group label {
-    display:block;
-    font-weight:bold;
-    color:#333;
-    margin-bottom:6px;
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 6px;
 }
 
 
@@ -44,28 +47,49 @@
 .form-group textarea,
 .form-group select {
 
-    width:100%;
-    padding:12px;
-    border:1px solid #ccc;
-    border-radius:7px;
-    font-size:15px;
-    box-sizing:border-box;
+    width: 100%;
+    padding: 12px;
 
+    border: 1px solid #ccc;
+    border-radius: 7px;
+
+    font-size: 15px;
+
+    box-sizing: border-box;
 }
 
 
 .form-group textarea {
-    height:120px;
-    resize:none;
+    height: 120px;
+    resize: none;
+}
+
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+
+    outline: none;
+    border-color: #1f4e79;
+
+}
+
+
+.upload-box {
+
+    background: #f4f6f9;
+    padding: 15px;
+    border-radius: 8px;
+
 }
 
 
 .submit-btn {
 
-    width:100%;
-    padding:14px;
+    width: 100%;
+    padding: 14px;
 
-    background:#1f4e79;
+    background: #1f4e79;
     color:white;
 
     border:none;
@@ -77,17 +101,30 @@
 }
 
 
-.info-box {
+.submit-btn:hover {
 
-margin-top:20px;
-padding:15px;
-background:#eef5ff;
-border-left:5px solid #1f4e79;
-border-radius:5px;
+    background:#163a5a;
 
 }
 
+
+.info-box {
+
+    margin-top:20px;
+    padding:15px;
+
+    background:#eef5ff;
+    border-left:5px solid #1f4e79;
+
+    border-radius:5px;
+
+    font-size:14px;
+
+}
+
+
 </style>
+
 
 
 <div class="report-container">
@@ -97,7 +134,7 @@ border-radius:5px;
 
 
 <p class="subtitle">
-Help improve your community by reporting problems affecting residents.
+    Help improve your community by reporting problems affecting residents.
 </p>
 
 
@@ -111,62 +148,17 @@ Help improve your community by reporting problems affecting residents.
 
 
 
-<!-- TITLE -->
-
 <div class="form-group">
 
 <label>
 Issue Title
 </label>
 
-
 {{ form.title }}
 
-
 </div>
 
 
-
-
-<!-- AI SUGGESTION -->
-
-<div id="ai-suggestion"
-style="
-display:none;
-margin-bottom:15px;
-padding:15px;
-background:#eef5ff;
-border-left:5px solid #1f4e79;
-border-radius:8px;
-">
-
-
-<p>
-💡 AI Suggested Title:
-</p>
-
-
-<h4 id="suggested-title"></h4>
-
-
-
-<button
-type="button"
-id="use-title"
-class="submit-btn">
-
-Use Suggested Title
-
-</button>
-
-
-</div>
-
-
-
-
-
-<!-- DESCRIPTION -->
 
 <div class="form-group">
 
@@ -194,38 +186,32 @@ Category
 
 
 
-
 <div class="form-group">
 
 <label>
-
 Location
 
+<p style="color:#666;">
+Enter a Kenyan location such as:
+Nairobi CBD, Siaya Town, Nakuru West, Eldoret Town, Kakamega, etc.
+</p>
 </label>
 
-
 {{ form.county }}<br><br>
-
 {{ form.sub_county }}<br><br>
-
-{{ form.ward }}
-
+{{ form.ward }}<br><br>
 
 </div>
 
 
 
-
-
-<div class="form-group">
+<div class="form-group upload-box">
 
 <label>
 Attach Image (Optional)
 </label>
 
-
 {{ form.image }}
-
 
 </div>
 
@@ -237,7 +223,6 @@ Attach Image (Optional)
 Submit Report
 
 </button>
-
 
 
 </form>
@@ -252,143 +237,16 @@ Submit Report
 <strong>Reporting tips:</strong>
 
 <ul>
-
 <li>Provide a clear issue title</li>
-
-<li>Include exact location</li>
-
-<li>Add image if possible</li>
-
-<li>Give enough details</li>
-
+<li>Include the exact location</li>
+<li>Add an image if possible</li>
+<li>Give enough details for officials to understand the problem</li>
 </ul>
 
-
 </div>
 
 
 </div>
-
-
-<script>
-
-
-const titleInput =
-document.getElementById("id_title");
-
-
-const descriptionInput =
-document.getElementById("id_description");
-
-
-const box =
-document.getElementById("ai-suggestion");
-
-
-const suggested =
-document.getElementById("suggested-title");
-
-
-const useButton =
-document.getElementById("use-title");
-
-
-
-function checkSuggestion(){
-
-
-let text =
-titleInput.value + " " + descriptionInput.value;
-
-
-
-if(text.length < 5){
-    box.style.display="none";
-    return;
-}
-
-
-
-fetch(
-"/ai-title/?text=" +
-encodeURIComponent(text)
-)
-
-
-.then(response => response.json())
-
-
-.then(data => {
-
-
-if(data.title){
-
-
-suggested.innerText =
-data.title;
-
-
-box.style.display="block";
-
-
-}
-else{
-
-
-box.style.display="none";
-
-
-}
-
-
-});
-
-
-}
-
-
-
-// only when leaving title field
-titleInput.addEventListener(
-"blur",
-function(){
-
-    setTimeout(
-        checkSuggestion,
-        500
-    );
-
-});
-
-
-
-// also check after description is entered
-descriptionInput.addEventListener(
-"blur",
-function(){
-
-    checkSuggestion();
-
-});
-
-
-
-
-useButton.onclick=function(){
-
-
-titleInput.value =
-suggested.innerText;
-
-
-box.style.display="none";
-
-
-};
-
-
-
-</script>
 
 
 {% endblock %}

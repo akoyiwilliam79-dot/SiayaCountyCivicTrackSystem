@@ -1,9 +1,6 @@
 from pathlib import Path
 from decouple import config
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 # =========================
 # BASE DIRECTORY
@@ -17,7 +14,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 DEBUG = True  # set False in production
 
-ALLOWED_HOSTS = ["*"]  # set specific hosts in production, e.g. ["yourdomain.com", "www.yourdomain.com"]
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+]
 
 
 # =========================
@@ -108,11 +108,11 @@ USE_TZ = True
 # =========================
 # STATIC & MEDIA
 # =========================
-STATIC_URL = "/static/"
+STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-MEDIA_URL = "/media/"
+MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 
@@ -127,7 +127,7 @@ LOGOUT_REDIRECT_URL = "/"
 # =========================
 # CUSTOM SETTINGS
 # =========================
-OFFICER_REGISTRATION_KEY = "COUNTY-2026"    
+OFFICER_REGISTRATION_KEY = config("OFFICER_REGISTRATION_KEY")
 
 
 # =========================
@@ -162,21 +162,3 @@ LOGGING = {
         "level": "INFO",
     },
 }
-
-# =========================
-# EMAIL SETTINGS
-# =========================
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
-
-EMAIL_HOST_USER = config("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
-
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")

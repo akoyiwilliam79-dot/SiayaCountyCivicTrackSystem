@@ -17,6 +17,5 @@ urlpatterns = [
     path('issues/<int:id>/support/', views.support_issue, name='support_issue'),
     path('issue/edit/<int:issue_id>/', views.edit_issue, name='edit_issue'),
     path('issue/delete/<int:issue_id>/', views.delete_issue, name='delete_issue'),
-    path('ai-title/',views.suggest_title_ai,name='ai_title'),
 
 ]

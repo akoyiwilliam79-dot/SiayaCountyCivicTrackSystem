@@ -1,4 +1,5 @@
-from .ai_moderator import check_report
+from urllib import request
+
 from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import User
@@ -10,41 +11,11 @@ from django.conf import settings
 from django.core.paginator import Paginator
 
 from .models import *
-from .forms import IssueForm, ProfileImageForm
+from .forms import *
 
 import logging
 
-from django.core.mail import send_mail
-from django.conf import settings
-
-#AI
-from django.http import JsonResponse
-from .ai_title_generator import generate_title
-from .language_guard import check_language
-
 logger = logging.getLogger(__name__)
-
-
-# =========================
-# AI VIEW
-# =========================
-
-def suggest_title_ai(request):
-
-    text = request.GET.get("text", "")
-
-
-    title = generate_title(text)
-
-
-    return JsonResponse({
-        "title": title
-    })
-
-
-
-
-
 
 # =========================
 # REGISTER VIEW
@@ -86,7 +57,7 @@ def register_view(request):
             return redirect('register')
 
       
-            return redirect('register')
+            
 
         # CREATE USER
         user = User.objects.create_user(
@@ -169,7 +140,9 @@ def login_view(request):
 # LOGOUT VIEW
 # =========================
 def logout_view(request):
-    
+    logger.info(
+    f"{request.user.username} logged out"
+    )
     logout(request)
     messages.success(request, "You have been logged out successfully.")
     return redirect('login')
@@ -224,37 +197,9 @@ def dashboard(request):
 # HOME
 # =========================
 def home(request):
+    return render(request, 'civicapp/home.html')
 
-    context = {
 
-        "total_issues":
-        Issue.objects.count(),
-
-        "resolved_issues":
-        Issue.objects.filter(
-            status="resolved"
-        ).count(),
-
-        "active_issues":
-        Issue.objects.exclude(
-            status="resolved"
-        ).count(),
-
-        "total_users":
-        User.objects.count(),
-
-        "recent_issues":
-        Issue.objects.order_by(
-            "-created_at"
-        )[:5],
-
-    }
-
-    return render(
-        request,
-        "civicapp/home.html",
-        context
-    )
 # =========================
 # REPORT ISSUE
 # =========================
@@ -262,53 +207,27 @@ def home(request):
 def report_issue(request):
 
     if request.method == "POST":
-        form = IssueForm(request.POST, request.FILES)
+
+        form = IssueForm(
+            request.POST,
+            request.FILES
+        )
 
         if form.is_valid():
 
             issue = form.save(commit=False)
+
             issue.created_by = request.user
 
 
             # =========================
-            # AI LANGUAGE GUARD
+            # CLEAN INPUT
             # =========================
 
-            language_check = check_language(
-                f"{issue.title} {issue.description}"
-            )
-
-
-            if not language_check["allowed"]:
-                messages.error(
-                    request,
-                    language_check["message"]
-                )
-                return redirect('report_issue')
-
-
-            # =========================
-            # AI MODERATION LAYER
-            # =========================
-
-            review = check_report(
-                f"{issue.title} {issue.description}"
-            )
-
-
-            if not review["allowed"]:
-                messages.error(
-                    request,
-                    review["reason"]
-                )
-                return redirect('report_issue')
-
-
-            if review["suggestion"]:
-                messages.warning(
-                    request,
-                    f"Suggested professional title: {review['suggestion']}"
-                )
+            issue.title = issue.title.strip()
+            issue.county = issue.county.strip()
+            issue.sub_county = issue.sub_county.strip()
+            issue.ward = issue.ward.strip()
 
 
             # =========================
@@ -316,18 +235,27 @@ def report_issue(request):
             # =========================
 
             duplicate_issue = Issue.objects.filter(
-                title__icontains=issue.title,
+
+                title__iexact=issue.title,
+
                 category=issue.category,
-                county=issue.county,
-                sub_county=issue.sub_county,
-                ward=issue.ward,
-            ).exclude(created_by=request.user).first()
+
+                county__iexact=issue.county,
+
+                sub_county__iexact=issue.sub_county,
+
+                ward__iexact=issue.ward,
+
+            ).exclude(
+                created_by=request.user
+            ).first()
 
 
             if duplicate_issue:
+
                 messages.error(
                     request,
-                    "This issue already exists. You can only support the existing report."
+                    "This issue already exists. You can support the existing report instead."
                 )
 
                 return redirect(
@@ -354,7 +282,9 @@ def report_issue(request):
             )
 
 
-            return redirect('public_issues')
+            return redirect(
+                'public_issues'
+            )
 
 
         else:
@@ -366,15 +296,17 @@ def report_issue(request):
 
 
     else:
+
         form = IssueForm()
 
 
     return render(
         request,
         'civicapp/report_issue.html',
-        {'form': form}
+        {
+            'form': form
+        }
     )
-
 # =========================
 # PUBLIC ISSUES
 # =========================
@@ -427,9 +359,13 @@ def my_reports(request):
 @login_required
 def profile(request):
 
-    profile = request.user.profile
+    profile, created = Profile.objects.get_or_create(
+        user=request.user
+    )
 
-    total_issues = Issue.objects.filter(created_by=request.user).count()
+    total_issues = Issue.objects.filter(
+        created_by=request.user
+    ).count()
 
     pending_issues = Issue.objects.filter(
         created_by=request.user,
@@ -446,7 +382,9 @@ def profile(request):
         status='resolved'
     ).count()
 
+
     if request.method == "POST":
+
         form = ProfileImageForm(
             request.POST,
             request.FILES,
@@ -454,12 +392,26 @@ def profile(request):
         )
 
         if form.is_valid():
-            form.save()
-            messages.success(request, "Profile photo updated successfully.")
+
+            profile = form.save(commit=False)
+
+            if 'profile_image' in request.FILES:
+                profile.profile_image = request.FILES['profile_image']
+
+            profile.save()
+
+            messages.success(
+                request,
+                "Profile photo updated successfully."
+            )
+
             return redirect('profile')
 
     else:
-        form = ProfileImageForm(instance=profile)
+        form = ProfileImageForm(
+            instance=profile
+        )
+
 
     context = {
         'form': form,
@@ -469,12 +421,16 @@ def profile(request):
         'resolved_issues': resolved_issues,
     }
 
-    return render(request, 'civicapp/profile.html', context)
+
+    return render(
+        request,
+        'civicapp/profile.html',
+        context
+    )
 
 # =========================
 # UPDATE STATUS
 # =========================
-
 @login_required
 def update_status(request, id):
 
@@ -482,75 +438,31 @@ def update_status(request, id):
         messages.error(request, "Only officers can update issue status.")
         return redirect('issue_detail', id=id)
 
-
     issue = get_object_or_404(Issue, id=id)
 
+    old_status = issue.status
 
     if issue.status == 'pending':
         issue.status = 'in_progress'
-        log_message = "Status changed from Pending → In Progress"
+        message = "Status changed from Pending → In Progress"
 
     elif issue.status == 'in_progress':
         issue.status = 'resolved'
-        log_message = "Status changed from In Progress → Resolved"
-
+        message = "Status changed from In Progress → Resolved"
     else:
-        log_message = "No status change"
-
+        message = "No status change"
 
     issue.save()
 
-
     IssueLog.objects.create(
         issue=issue,
-        message=log_message
+        message=message
     )
 
-
-    # Send email notification
-
-    send_mail(
-        subject=f"Issue Update: {issue.title}",
-
-        message=f"""
-Hello {issue.created_by.username},
-
-Your issue has been updated.
-
-Issue:
-{issue.title}
-
-Updated By:
-Officer {request.user.username}
-
-New Status:
-{issue.status}
-
-Thank you for using Civic Track.
-
-Regards,
-County Civic Track Team
-""",
-
-        from_email=settings.EMAIL_HOST_USER,
-
-        recipient_list=[
-            issue.created_by.email,
-            "countycivictrack@gmail.com",
-        ],
-
-        fail_silently=False,
-    )
-
-
-    messages.success(
-        request,
-        "Issue updated and email notifications sent."
-    )
-
-
+    messages.success(request, "Issue status updated successfully.")
     return redirect('issue_detail', id=id)
-    
+
+
 # =========================
 # OFFICER REQUIRED DECORATOR
 # =========================
