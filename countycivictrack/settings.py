@@ -15,6 +15,8 @@ SECRET_KEY = config("SECRET_KEY")
 DEBUG = True  # set False in production
 
 ALLOWED_HOSTS = [
+     'siayacountycivictracksystem.onrender.com',
+    'localhost',
     "127.0.0.1",
     "localhost",
 ]
