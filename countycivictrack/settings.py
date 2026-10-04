@@ -129,7 +129,7 @@ LOGOUT_REDIRECT_URL = "/"
 # =========================
 # CUSTOM SETTINGS
 # =========================
-OFFICER_REGISTRATION_KEY = config("OFFICER_KEY")
+OFFICER_REGISTRATION_KEY = config("OFFICER_REGISTRATION_KEY")
 
 
 # =========================
